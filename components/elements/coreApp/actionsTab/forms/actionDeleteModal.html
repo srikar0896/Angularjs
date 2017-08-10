@@ -1,0 +1,29 @@
+<script type="text/ng-template" id="modals/deleteModal">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Delete</h3>
+    </div>
+    <div class="modal-body" style="max-height:200px;overflow-y:auto">
+      <span ng-if="actionHierarchyList.length == 0" style="font-size:16px;">This action is not referenced any where else.</span>
+      <span ng-if="actionHierarchyList.length>0" style="font-size:16px;">Action used by these Menus and Super Actions.</span>
+
+      <usage-widget ng-if="actionHierarchyList.length>0"></usage-widget>
+
+       <p ng-if="actionHierarchyList.length>0" style="font-size:16px;margin-top:10px">If you delete this Action dependent Actions will not perform as desired.</p>
+    </div>
+
+    <!-- Modal Footer Use if required -->
+
+    <div class="modal-footer">
+        <button class="btn btn-danger" type="button" ng-show="showDeleteLoader == false" ng-click="confirmDeletion()">DELETE</button>
+        <div class="spinners" ng-show="showDeleteLoader == true" style="margin-top: 8px;
+          margin-bottom: 2px;
+          margin-right: 10px;
+          width: 24px;
+          height: 24px;
+          right: 0px;
+          position: relative;
+          float: right;"></div>
+        <!-- <button class="btn btn-default" type="button" ng-click="cancel()">CANCEL</button> -->
+    </div>
+
+</script>

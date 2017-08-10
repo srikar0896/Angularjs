@@ -1,0 +1,22 @@
+<div class="panel br" ng-controller="editTextFormController" ng-show="activeForm == 'editTextForm'" style="height:520px;float:left;position:relative;margin-left:24px;min-width:320px;width:320px;max-width:350px;">
+    <div class="panel-body">
+        <!-- showParentsList(activeActionId) ng-click-->
+        <editform-inputs></editform-inputs>
+              <div class="form-group">
+                  <div class="col-sm-6" style="width:100%">
+                      <span class="float-right bs-badge badge-danger" ng-show="viewMsgCountBadge==true" ng-style="{'background-color':640-actionMsg.length > 15 ?  '#1BC492': '#c71f16'}" style="z-index:999;position:absolute;font-size:10px;margin-top:-13px;color:white;margin-left:88%;border-radius:80%;"
+                          style="opacity:0.9">{{640 - actionMsg.length}}</span>
+                      <textarea ng-style="{'border':actionMsg.length<641? '1px solid #ccc':'1px solid rgb(244, 67, 54)'}" style="height: 180px;" ng-trim="false" name="" required rows="6" ng-focus="viewMsgCountBadge =true" ng-blur="viewMsgCountBadge =false" id="actionMsg" ng-model="actionMsg" class="form-control textarea-no-resize textarea-sm" placeholder="Add the message you want to send your users."
+                          + <br> +"The message must not exceed 640 charecters"></textarea>
+                  </div>
+              </div>
+          </form>
+        </div>
+
+        <span class="savedLabel float-left bounceIn animated" ng-if="showSavedLabel == true" style="left:0;top:0;margin-top:482px;color: green;position: absolute;margin-left: 20px;"><i class="glyph-icon icon-check" style=""></i>saved</span>
+        <div class="button-pane remove-border float-right" style="margin-top:472px;padding:0px;right:25px;top:0;position:absolute;">
+            <div class="spinners" ng-show="showViewLoader == true" style="margin-top:8px;margin-bottom:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+            <button class="btn btn-info bg-primary" ng-disabled="(denySubmitDueName == true || denySubmitDueSrt  == true) || actionMsg.length>640 || actionMsg.length == 0 || actionName.length == 0 ||actionName.length >25 || actionShortcut.length >8" ng-show="!(showViewLoader)" ng-click="updateTextAction()" style="float:right">Save</button>
+        </div>
+    </div>
+</div>

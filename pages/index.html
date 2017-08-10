@@ -1,0 +1,118 @@
+<div ng-cloak ng-controller="indexController" class="hero-box hero-box-smaller bg-gradient-9">
+    <div class="main-header bg-header wow fadeInDown">
+        <div class="container" style="margin-top:-20px">
+            <div class="right-header-btn">
+            </div>
+            <!-- .header-logo -->
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .main-header -->
+
+    <style>
+        .hero-box-smaller .owl-pagination {
+            display: none;
+        }
+    </style>
+    <div id="mainDiv" class="hero-box hero-box-smaller bg-gradient-9" style="height:100%;padding:0px">
+        <div class="container">
+            <div class="image-content font-white" style="margin-top:4%;height:70%;max-height:400px;">
+                <div>
+                    <img src="assets/image-resources/logo.png" alt="" class="meta-image">
+                </div>
+            </div>
+            <button class="mrg5R btn pull-right btn-alt btn-lg btn-outline-inverse remove-bg" ng-click="showLoginModal()" title="login" style="border-radius:0px;border: 1px solid white;color: white;height: 28px;font-size: 14px;float:right;margin-top: -190px;">
+                            <span>Login</span>
+                        </button>
+            <div style="margin-top:-15px">
+                <div class="testimonial-box-big">
+                    <div class="testimonial-content" style="    padding-bottom: 0px;">
+                        <p class="hero-text" style="color:white;font-size:28px;font-family: 'Raleway','Helvetica Neue','Helvetica','Arial','sans-serif';">Plug empowers individuals and small organizations with facebook pages to easily and efficiently engage with their audience via Messenger.
+                        </p>
+                        <br>
+                        <div>
+                            <button ng-click="openSignupModal()" class="mrg5R btn btn-alt btn-lg btn-outline-inverse remove-bg" title="Sign Up" style="border-radius:0px;border: 1px solid white;color: white;height: 28px;font-size: 14px;">
+                                    <span>SIGN UP FOR BETA</span>
+                            </button>
+                        </div>
+                        <br>
+                    </div>
+
+                    <script type="text/ng-template" id="modals/signupModal">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="modal-title">Sign up For Beta</h3>
+                        </div>
+                        <div class="modal-body bg-gradient-9" style="height:420px;">
+                          <signup-page></signup-page>
+                        </div>
+
+                        <!-- Modal Footer Use if required -->
+
+                        <!-- <div class="modal-footer">
+                            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                        </div> -->
+
+                    </script>
+
+                    <div class="testimonial-content">
+
+                        <div class="feature-content" style="font-family: 'Raleway','Helvetica Neue','Helvetica','Arial','sans-serif';color:white;font-size:20px;text-align: left;">
+                            <div class="feature-heading">
+                                <h2 class="hero-text" style="padding: 0px;margin-left: 3%;">Now you and your team members can:</h2>
+                            </div>
+                            <ul class="feature-list" style="font-family: 'Raleway','Helvetica Neue','Helvetica','Arial','sans-serif'; margin-left:5%">
+                                <li style="padding-bottom: 15px;">
+                                    <i class="glyph-icon icon-clock-o" style="font-size: 30px;"></i>
+                                    <!-- <i class="fa fa-bullseye"></i> -->
+                                    <span>
+                              <b class="hero-text" style="padding-top: 0px;">Save time - reply with a few clicks</b>
+                              <p class="hero-text" style="font-size: 16px;padding-left: 50px;opacity: 0.6;font-family: 'Raleway','Helvetica Neue','Helvetica','Arial','sans-serif';">Quickly select and send pre-crafted messages to your customers.</p>
+                            </span>
+                                </li>
+                                <li style="    padding-bottom: 15px;">
+                                    <i class="glyph-icon icon-bullseye" style="font-size: 30px;"></i>
+                                    <span>
+                            <b class="hero-text" style="padding-top: 0px;">Be on brand - with pre-crafted messages</b>
+                            <p class="hero-text" style="font-size: 16px;padding-left: 50px;opacity: 0.6;font-family: 'Raleway','Helvetica Neue','Helvetica','Arial','sans-serif';">Respond to common questions or customer requests by sending pre-approved and on-brand responses.</p>
+                            </span>
+                                </li>
+                                <li style="    padding-bottom: 15px;">
+                                    <i class="glyph-icon icon-taxi" style="font-size: 30px;"></i>
+                                    <span>
+                              <b class="hero-text" style="padding-top: 0px;">Enable customers to self navigate</b>
+                              <p class="hero-text" style="font-size: 16px;padding-left: 50px;opacity: 0.6;font-family: 'Raleway','Helvetica Neue','Helvetica','Arial','sans-serif';">You can setup and send Menus, Quick Replies and other responses with ease - these nifty Facebook tech features are typically used only by code ninjas.</p>
+                            </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+    <div id="login-msg" style="margin-top: 10px;display:none;">
+        <ul>
+            To use Plug you need to ask Facebook to grant us the following:
+            <li>Access to your public profile and email address, to help us identify you every time you log in.</li>
+            <li>Permission to manage pages, this helps us identify the Facebook Pages you manage.</li>
+            <li>Permission to send messages on behalf of your pages, this would help us send messages on your behalf. (Don't worry, we will only send what you ask us to send!)</li>
+            <li>Permission to send messages from pages you manage anytime after First User Interaction, this would help us to send messages that that you want your customers to receive even when they haven't contacted you in the last 24 hours (again, Don't
+                worry, we will only send what you ask us to send!).</li>
+            <li> You can always disable Plug in your Facebook Page settings.</li>
+            When you click Login, Facebook will ask you to grant us the above permissions
+        </ul>
+        <ul style="margin-left:10%">
+            <a style="float:left;text-decoration: underline;cursor:pointer" ng-click="openWindowLock()" style="float:left">Plug Terms of Service</a>
+            <a ng-click="openWindowLock2()" style="float:left;text-decoration: underline;cursor:pointer;margin-left:50px;">Privacy Policy Applicable</a>
+        </ul>
+    </div>
+    <!-- JS Demo -->
+    <!-- <script type="text/javascript" src="assets-minified/frontend-all-demo.js"></script> -->
+</div>

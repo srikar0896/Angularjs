@@ -1,0 +1,28 @@
+<div ng-controller="coreAppController">
+
+  <alert-bar></alert-bar>
+
+  <top-navigation></top-navigation>
+
+  <fbpageselection-modal></fbpageselection-modal>
+
+  <div id="page-content-wrapper" style="background-color:white;height: 100%;position:absolute">
+      <div class="example-box-wrapper" style="margin-top:14px;height:100%;">
+          <div class="tab-content" style="height:100%;">
+            <div class="tab-pane active" id="chat-panel" style="max-width:1366px; height:100%;padding-top:0px;margin-bottom:0px;padding:0px">
+              <chat-tab></chat-tab>
+          </div>
+            <div class="tab-pane" id="actions-panel" style="height:100%;padding-top:0px;padding-right:2.4%;">
+              <actions-tab></actions-tab>
+            </div>
+
+              <div class="tab-pane" id="learn-panel" style="max-width:1366px; height:100%;padding-top:0px;margin-bottom:0px;padding-right:2.4%;padding-left:0px;">
+                  <div class="container" style="margin:0px;height:100%;float:left;margin-top: -13px;padding:0px;">
+                    <learn-tab></learn-tab>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>

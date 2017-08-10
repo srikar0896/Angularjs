@@ -1,0 +1,21 @@
+<div class="panel pops bounceIn animated br" id="popupWind" style="float:left;padding-top:0px; width:24%;max-width:350px;
+  height:250px;margin-left: -10px;" ng-show="activeButtonForm == 'usageForm'">
+   <div class="popover-arrow" style="top:142px !important;"></div>
+   <div class="panel-body" style="margin-top: -25px;padding-left: 10px;padding-right:5px;">
+     <h4 class="case case-size">Action Usage</h4>
+
+       <h5 ng-if="actionHierarchyList.length == 0" style="margin-top:50px;margin-left:1px">This action is not referenced by any other action.</h5>
+       <h5  ng-if="actionHierarchyList.length > 0" style="margin-top:15px;margin-left:1px">Action used by these Menus and Super Actions.</h5>
+
+       <div style="overflow-y:scroll;max-height:115px;margin-top:-10px;" ng-if="actionHierarchyList.length > 0">
+
+        <usage-widget></usage-widget>
+
+     </div>
+     <div class="button-pane remove-border float-right" style="margin-top:199px;    padding:0px;position:absolute;right:12px;top:0;">
+         <center><button class="btn btn-info bg-primary" ng-click="activeButtonForm = ''" style="float:right">Done</button></center>
+     </div>
+
+   </div>
+
+</div>

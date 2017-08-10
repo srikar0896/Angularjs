@@ -1,0 +1,24 @@
+<div class="panel br" ng-show="activeForm == 'saveSuperActionForm'" ng-controller="saveSuperActionController" style="height:520px;max-width:350px;float:left;position:relative;margin-left:24px;min-width:320px;width:320px">
+    <div class="panel-body">
+          <saveform-inputs></saveform-inputs>
+                <div class="form-group remove-border" style="padding: 0px;">
+                    <div id="editContainer" class="col-sm-6" style="width:100%">
+                        <select chosen multiple id="superActions" chosen data-placeholder="Choose actions" class="control-group chosen-select chosen-height">
+                                            <optgroup ng-repeat="cat in all" label="{{cat.Name}}">
+                              <!--ng-disabled="!{{acts.Type == 'text'}}" --> <option ng-class="{ 'font-red disabled': getStatusOfAction(acts.ActionID) == 'inactive' }" ng-if="acts.Type== 'text' || acts.Type=='image'" title="getStatusOfAction(acts.ActionID) + ' Action'" ng-repeat="acts in cat.actions" value="{{acts.ActionID}}" >{{acts.ActionName}}</option>
+
+                                           </optgroup>
+
+                                       </select>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="button-pane remove-border float-right" style="margin-top:472px;padding:0px;right:25px;top:0;position:absolute;">
+            <div ng-show="showSaveLoader == true" class="spinners" style="margin-top:8px;margin-bottom:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+            <center><button class="btn btn-info bg-primary" ng-disabled="(denySubmitDueName == true || denySubmitDueSrt  == true) || actionName.length == 0 ||actionName.length >25 || actionShortcut.length >8" ng-show="!(showSaveLoader)" ng-click="saveSuperAction()" style="float:right">Save</button></center>
+        </div>
+    </div>
+</div>

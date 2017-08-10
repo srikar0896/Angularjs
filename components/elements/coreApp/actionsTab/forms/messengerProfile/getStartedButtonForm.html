@@ -1,0 +1,58 @@
+<div class="panel br" ng-show="activeForm == 'getStartedButtonForm'" ng-controller="getStartedButtonController" style="height:520px;float:left;position:relative;margin-left:24px;min-width:320px;width:320px;max-width:350px;">
+    <div class="panel-body">
+        <div class="float-right" ng-if="isPublishableBtn == true && checkGetStartedExists()">
+            <label class="switch" style="margin:0px;z-index:9999999">
+             <input id="togSwitchs" type="checkbox" ng-change="getStartedToggleButton(this)" ng-model="gst">
+             <div class="slider round"></div>
+           </label>
+           <div style="float:right;width:50px;margin-left:2px;padding-top:3px;">
+           <span ng-if="gst == true">Enabled</span>
+           <span ng-if ="gst == false">Disabled</span>
+           </div>
+        </div>
+        <div ng-show="updateGetStartedStatusLoader == true" class="spinners float-right" style="margin-top:0px;margin-bottom:-8px;margin-left:8px;margin-right:0px;width:24px;height:24px;"></div>
+
+        <h3 class="case case-size" style="padding-right: 3px;">
+                           <i class="glyph-icon tooltip-button icon-comment font-grey" style="margin-top:-5px;width:12px;margin-right:16px;margin-bottom:-5px;height:12px;border:none;cursor:pointer;font-size:18px; margin-right:10px;"></i>Get Started Button
+                           </h3>
+        <div class="example-box-wrapper">
+          <h6>The Welcome Screen can display a Get Started button.
+            The welcome screen is only shown the first time the user interacts with your Page on Messenger.
+            You can then present a personalized message to greet the user to prompt him or her to take an action.
+            Adding a "Get Started" button resolves the issue of users not knowing what to do to break the ice with you.
+          </h6>
+            <form name="createForm" id="createForm" class="form-horizontal pad15L pad15R" data-parsley-validate="">
+                <div class="form-group">
+                    <div class="col-sm-6" style="width:100%">
+                        <textarea style="height: 270px;" ng-model="getStartedMsg" ng-trim="false" name="" required rows="6" ng-focus="viewMsgCountBadge =true" ng-blur="viewMsgCountBadge =false" ng-model="actionMsg" class="form-control textarea-no-resize textarea-sm" id="getStartedMsg" placeholder="Enter the text for Get Started Button"></textarea>
+
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+        <div class="button-pane remove-border float-right" style="margin-top:472px;padding:0px;right:105px;top:0;position:absolute;">
+            <div ng-show="showGettingStartedSaveLoader == true" class="spinners" style="margin-top:8px;margin-bottom:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+            <center><button class="btn btn-info bg-primary" ng-show="!(showGettingStartedSaveLoader)" ng-disabled="getStartedMsg.length == 0 || getStartedMsg.length >640" ng-click="saveGetStarted()" style="float:right">Save</button></center>
+        </div>
+        <div class="button-pane remove-border float-right" ng-init="publishLoader = false" style="margin-top:472px;padding:0px;right:25px;top:0;position:absolute;">
+            <div ng-show="publishLoader == true" class="spinners" style="margin-bottom: 0px;width:30px;height:30px;margin-top:10%;margin-left:48%;font-size:20px;"></div>
+            <center><button class="btn btn-info bg-primary" ng-if="publishLoader == false" ng-click="publishGetStartedButton()" ng-disabled="getStartedMsg.length == 0 || getStartedMsg.length >640 || isPublishableBtn == false" style="float:right">Publish</button></center>
+        </div>
+
+
+    </div>
+</div>
+<script type="text/ng-template" id="modals/disablePublishforMessengerProfileModal">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Enable Toggle</h3>
+    </div>
+    <div class="modal-body">
+      <h4>Please Enable toggle in order to publish the messenger profile.</h4>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" type="button" ng-click="closeModal()">OK</button>
+    </div>
+
+</script>

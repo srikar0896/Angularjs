@@ -1,0 +1,53 @@
+<div class="panel br" ng-controller="greetingTextController" ng-show="activeForm == 'greetingTextForm'" style="height:520px;float:left;position:relative;margin-left:24px;min-width:320px;width:320px;max-width:350px;">
+    <div class="panel-body">
+        <div class="float-right" ng-if="isPublishableBtn == true && checkGreetingTextExists()">
+          <label class="switch" style="margin:0px;z-index:999999">
+           <input id="togSwitcht" type="checkbox" ng-change="greetingToggleButton(this)" ng-model="sgt">
+           <div class="slider round"></div>
+         </label>
+         <div style="float:right;width:50px;margin-left:2px;padding-top:3px;">
+         <span ng-if="sgt == true">Enabled</span>
+         <span ng-if ="sgt == false">Disabled</span>
+         </div>
+        </div>
+        <div ng-show="updateGreetingStatusLoader == true" class="spinners float-right" style="margin-top:0px;margin-bottom:-8px;margin-left:8px;margin-right:0px;width:24px;height:24px;"></div>
+
+        <h3 class="case case-size" style="padding-right: 3px;">
+                           <i class="glyph-icon tooltip-button icon-comment font-grey" style="margin-top:-5px;width:12px;margin-right:16px;margin-bottom:-5px;height:12px;border:none;cursor:pointer;font-size:18px; margin-right:10px;"></i>Greeting Text
+                           </h3>
+        <div class="example-box-wrapper">
+          <h6>The Greeting Text is only shown the first time the user interacts with the Page on Messenger.</h6>
+            <form name="createForm" id="createForm" class="form-horizontal pad15L pad15R" data-parsley-validate="">
+                <div class="form-group">
+                    <div class="col-sm-6" style="width:100%">
+                        <span class="float-right bs-badge badge-danger" ng-show="viewGreetingMsgCountBadge == true" ng-style="{'background-color':160-greetingMsg.length > 15 ?  '#1BC492': '#c71f16'}" style="z-index:999;position:absolute;font-size:10px;margin-top:-13px;color:white;margin-left:88%;border-radius:80%;"
+                        style="opacity:0.9">{{160 - greetingMsg.length}}</span>
+                        <textarea limit-to="160" style="height: 270px;" ng-trim="false" name="" required rows="6" ng-focus="viewGreetingMsgCountBadge =true" ng-blur="viewGreetingMsgCountBadge =false" ng-model="greetingMsg" class="form-control textarea-no-resize textarea-sm" id="greetingMsg" placeholder="Enter the Greeting Text"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="button-pane remove-border float-right" style="margin-top:472px;padding:0px;right:105px;top:0;position:absolute;">
+            <div ng-show="showGreetingSaveLoader == true" class="spinners" style="margin-top:8px;margin-bottom:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+            <center><button class="btn btn-info bg-primary" ng-disabled="greetingMsg.length == 0 || greetingMsg.length > 640" ng-show="!(showGreetingSaveLoader)" ng-click="saveGreetingText()" style="float:right">Save</button></center>
+        </div>
+        <div class="button-pane remove-border float-right" style="margin-top:472px;padding:0px;right:25px;top:0;position:absolute;">
+            <div ng-show="publishLoader == true" class="spinners" style="margin-bottom: 0px;width:30px;height:30px;margin-top:10%;margin-left:48%;font-size:20px;"></div>
+            <center><button class="btn btn-info bg-primary" ng-show="publishLoader == false" ng-disabled="greetingMsg.length == 0 || greetingMsg.length > 640" ng-click="publishGreetingText()" style="float:right">Publish</button></center>
+        </div>
+
+
+    </div>
+</div>
+<script type="text/ng-template" id="modals/disablePublishforMessengerProfileModal">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Enable Toggle</h3>
+    </div>
+    <div class="modal-body">
+      <h4>Please Enable toggle in order to publish the messenger profile.</h4>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" type="button" ng-click="closeModal()">OK</button>
+    </div>
+
+</script>

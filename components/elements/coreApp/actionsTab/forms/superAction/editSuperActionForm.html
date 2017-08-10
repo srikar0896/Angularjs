@@ -1,0 +1,80 @@
+<div class="panel" ng-controller="editSuperActionController" ng-show="activeForm == 'editSuperActionForm'" style="float:left;position:relative;margin-left:24px;min-width:320px;width:320px;max-width:350px;height:520px">
+    <div class="panel-body">
+              <editform-inputs></editform-inputs>
+                <div class="form-group">
+                    <div class="col-sm-6" style="width:100%">
+                        <span>Choose up to three action here. They will be delivered in sequence.</span>
+
+                    </div>
+                </div>
+                <div class="form-group remove-border">
+                    <div id="editContainer" class="col-sm-6" style="width:100%">
+                        <select chosen multiple id="editSuperActions" chosen data-placeholder="Choose superactions" class="control-group chosen-select chosen" style="height:125px !important;">
+                                            <optgroup ng-repeat="cat in all" label="{{cat.Name}}">
+                                               <option ng-class="{ 'font-red disabled': getStatusOfAction(acts.ActionID) == 'inactive' }" ng-if="acts.Type== 'text' || acts.Type=='image'" ng-repeat="acts in cat.actions" value="{{acts.ActionID}}">{{acts.ActionName}}</option>
+                                           </optgroup>
+
+                                       </select>
+
+                    </div>
+                </div>
+                <div ng-if="actionsAndCategoriesService.getStatusOfAction(actionsAndCategoriesService.getActiveActionId()) == 'inactive'" class="mrg20T">
+                <div class="form-group" style="border:none;margin-top:-20px;">
+                    <div class="col-sm-6" style="width:100%">
+                      <strike><span ng-repeat="x in deletedActions" class="font-red">{{x.name}}</span></strike><span ng-if="deletedActions.length > 1">,</span>
+                      <span ng-if="deletedActions.length>1">Actions </span><span ng-if="deletedActions.length==1">Action </span>
+
+                    <span class=""> Deleted.</span>
+
+                    </div>
+
+                </div>
+                <div class="form-group" style="border:none">
+                  <span class="glyph-icon icon-asterisk" title="" data-original-title=".icon-elusive-asterisk" style="
+                    font-size: 9px;
+                    position: absolute;
+                    margin-left:16px;
+                "></span>
+                  <div class="col-sm-6" style="width:100%;margin-left:12px;">
+                      <span>This Super Action will not perform as originally designed.</span>
+
+                  </div>
+                </div>
+                </div>
+
+
+                <!-- <div ng-if="getStatusOfAction(activeActionId) == 'inactive'" class="mrg20T">
+                  <div class="form-group" style="border:none;margin-top:-20px;">
+                      <div class="col-sm-6" style="width:100%">
+                          <strike><span ng-repeat="x in deletedActions" class="font-red">{{x.name}}</span></strike><span ng-if="deletedActions.length > 1">,</span>
+                          <span ng-if="deletedActions.length>1">Actions </span><span ng-if="deletedActions.length==1">Action </span>
+
+                          <span class=""> Deleted.</span>
+
+                      </div>
+
+                  </div>
+                  <div class="form-group" style="border:none">
+                      <span class="glyph-icon icon-asterisk" title="" data-original-title=".icon-elusive-asterisk" style="
+                                  font-size: 9px;
+                                  position: absolute;
+                                  margin-left:16px;
+                              "></span>
+                      <div class="col-sm-6" style="width:100%;margin-left:12px;">
+                          <span>This Super Action will not perform as originally designed.</span>
+
+                      </div>
+                  </div>
+              </div> -->
+
+            </form>
+
+        </div>
+        <span class="savedLabel float-left bounceIn animated" ng-if="showSavedLabel == true" style="left:0;top:0;margin-top:482px;color: green;position: absolute;margin-left: 20px;"><i class="glyph-icon icon-check" style=""></i>saved</span>
+        <div class="button-pane remove-border float-right" style="margin-top:472px;padding:0px;right:25px;top:0;position:absolute;">
+            <div class="spinners" ng-show="showViewLoader == true" style="margin-top:8px;margin-bottom:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+            <button class="btn btn-info bg-primary" ng-disabled="(denySubmitDueName == true || denySubmitDueSrt  == true)  || actionName.length == 0 || actionName.length == 0 ||actionName.length >25 || actionShortcut.length >8" ng-show="!(showViewLoader)" ng-click="updateSuperAction()" style="float:right">Save</button>
+        </div>
+
+    </div>
+</div>

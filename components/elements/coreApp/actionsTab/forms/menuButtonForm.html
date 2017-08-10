@@ -1,0 +1,107 @@
+<div class="panel pops mrg15L bounceIn animated br" id="popupWindow" style="float:left;margin-top:210px;padding-top:0px; width:24%; max-width:320px;height:309px;" ng-show="activeButtonForm == 'addButtonForm'">
+    <div class="popover-arrow" id="addButtonArrow" ></div>
+    <div class="panel-body" style="margin-top:-16px;padding-top:0px;">
+      <h4 class="case case-size">Add option</h4>
+        <i ng-if="mode == 'addMode'" class="glyph-icon btn button tooltip-button opacity-hover icon-linecons-trash float-right" title="Delete" ng-click="closeMenuButtonForm()" style="z-index:10;margin-top:-42px;font-size:20px;width:20px;height:20px; margin-right:-10px;cursor:pointer;border:none; margin-right:-1px"></i>
+        <i ng-if="mode == 'editMode'" class="glyph-icon btn button tooltip-button opacity-hover icon-linecons-trash float-right" title="Delete" ng-click="deleteMenuButton()" style="z-index:10;margin-top:-42px;font-size:20px;width:20px;height:20px; margin-right:-10px;cursor:pointer;border:none; margin-right:-1px"></i>
+        <form name="menuButtonForm" class="form-horizontal bordered-row" id="menuButtonForm">
+            <div class="form-group remove-border">
+                <div class="col-sm-6" style="width:100%">
+                    <span class="bs-badge badge-danger" ng-show="menuBtnNameCountBadge==true" ng-style="{'background-color':20-menuBtnName.length > 5 ?  '#1BC492': '#c71f16'}" style="margin-top:20px;adding-left:-8px;position:absolute;font-size:10px;margin-top:-13px;color:white;margin-left:87%;border-radius:80%;"
+                        style="opacity:0.9">{{20 - menuBtnName.length}}</span>
+
+                    <input type="text" class="form-control" id="menuButtonName" ng-focus="menuBtnNameCountBadge = true" ng-blur="menuBtnNameCountBadge = false" autocomplete="off" ng-model="menuBtnName" ng-change="updateFakeButtonName()" placeholder="Add Option Label">
+                </div>
+            </div>
+            <div class="form-group remove-border" style="margin-top:-20px">
+                <div class="col-sm-6" style="width:100%;padding:2px;">
+                    <div class="example-box-wrapper">
+                        <div id="form-wizard-1">
+                            <ul id="addTabs" class="nav-responsive nav nav-pills" style=" margin-bottom: 10px;padding-left:15px;">
+                                <li style="cursor:pointer" class="active"><a data-target="#tab1" data-toggle="tab"><i class="fa fa-superpowers" aria-hidden="true"></i>  Actions </a></li>
+                                <li style="cursor:pointer"><a data-target="#tab2" data-toggle="tab"><i class="glyph-icon icon-link" ></i> URL</a></li>
+                                <li style="cursor:pointer">
+                                    <a data-target="#tab3" data-toggle="tab"> <i class="glyph-icon icon-phone"></i> Call</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab1">
+                                    <!-- <form name="ButtonSelectForm" class="form-horizontal bordered-row" data-parsley-validate=""> -->
+                                    <div class="form-group remove-border">
+                                        <div class="col-sm-6" style="width:100%">
+                                            <select id="menuActions" multiple chosen data-placeholder="Add actions" class="chosen-select" style="width:240px;">
+                                     <optgroup ng-repeat="cat in all" label="{{cat.Name}}">
+                                        <option ng-if="acts.ActionID != actionsAndCategoriesService.getActiveActionId()" ng-repeat="acts in cat.actions" ng-class="{ 'font-red disabled': getStatusOfAction(acts.ActionID) == 'inactive' }" value="{{acts.ActionID}}"> {{acts.ActionName}}</option>0
+                                    </optgroup>
+                                   </select>
+                                        </div>
+                                    </div>
+                                    <div ng-if="mode == 'editMode' && actionsAndCategoriesService.getStatusOfAction(actionsAndCategoriesService.getActiveActionId()) == 'inactive' && inactiveChoicePresent == true" class="mrg20T" style="position:absolute">
+                                    <div class="form-group" style="border:none;margin-top:-20px;">
+                                        <div class="col-sm-6" style="width:70%">
+                                          <strike><span ng-repeat="x in deletedActions" class="font-red">{{x.name}}</span></strike><span ng-if="deletedActions.length > 1">,</span>
+                                          <span ng-if="deletedActions.length>1">Actions </span><span ng-if="deletedActions.length==1">Action </span>
+
+                                        <span class=""> Deleted.</span>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group" style="border:none;margin-top:-15px">
+                                      <span class="glyph-icon icon-asterisk" title="" data-original-title=".icon-elusive-asterisk" style="
+                                        font-size: 9px;
+                                        position: absolute;
+                                        margin-left:16px;
+                                    "></span>
+                                      <div class="col-sm-6" style="width:70%;margin-left:12px;">
+                                          <span>This Menu will not perform as originally designed.</span>
+
+                                      </div>
+                                    </div>
+                                    </div>
+
+                                    <div class="button-pane remove-border float-right" style="margin-top:-4px;padding:0px;">
+                                        <div class="spinners" ng-show="showSaveLoader == true" style="margin-top:8px;margin-bottom:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+                                        <center><button class="btn btn-info bg-primary" ng-disabled="disableAddSaveBtn()" id="addMenuSaveBtn" ng-show="!(showSaveLoader)" ng-if="mode == 'addMode'" ng-click="saveTextMenuButton();menuBtnName =''" style="float:right">Done</button></center>
+                                        <center><button class="btn btn-info bg-primary" ng-disabled="disableAddSaveBtn()" id="addMenuSaveBtn" ng-show="!(showSaveLoader)" ng-if="mode == 'editMode'" ng-click="updateTextMenuButton();menuBtnName =''" style="float:right">Done</button></center>
+                                    </div>
+                                    <!-- </form> -->
+                                </div>
+                                <div class="tab-pane" id="tab2">
+                                    <!-- <form name="urlForm" id="urlForm" class="form-horizontal bordered-row" data-parsley-validate=""> -->
+                                    <div class="form-group remove-border" style="    margin-top: 15px;">
+                                        <div class="input-group" style="width:100%;margin-top:-20px;margin-top: -20px;padding-right: 15px;padding-left: 15px;">
+                                            <!-- <span class="input-group-addon">https://</span> -->
+                                            <input type="text" class="form-control" id="addUrl" ng-model="url" placeholder="Enter a URL">
+                                        </div>
+                                    </div>
+                                    <div class="button-pane remove-border float-right" style="margin-top:-4px;padding:0px;">
+                                        <div class="spinners" ng-show="showSaveLoader == true" style="margin-top:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+                                        <center><button class="btn btn-info bg-primary" ng-show="!(showSaveLoader)" ng-click="saveUrlMenuButton()" ng-if="mode == 'addMode'" style="float:right">Done</button></center>
+                                        <center><button class="btn btn-info bg-primary" ng-show="!(showSaveLoader)" ng-click="updateUrlMenuButton()" ng-if="mode == 'editMode'" style="float:right">Done</button></center>
+                                    </div>
+                                    <!-- </form> -->
+                                </div>
+                                <div class="tab-pane" id="tab3">
+                                    <!-- <form name="phoneForm" id="phoneForm" class="form-horizontal" data-parsley-validate=""> -->
+                                    <div class="form-group remove-border">
+                                        <div class="col-sm-6" style="width:100%">
+                                            <input id="inputNumber" type="text" ng-model="contactNumber" class="input-mask form-control" placeholder="Enter a phone number" data-inputmask="&apos;mask&apos;:&apos;(999) 999-9999&apos;">
+                                            <div class="help-block">(999) 999-9999</div>
+                                        </div>
+                                    </div>
+                                    <div class="button-pane remove-border float-right" style="margin-top:-4px;padding:0px;">
+                                        <div class="spinners" ng-show="showSaveLoader == true" style="margin-top:8px;margin-bottom:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+                                        <center><button class="btn btn-info bg-primary" ng-show="!(showSaveLoader)" ng-if="mode == 'addMode'" ng-click="saveCallMenuButton();menuBtnName =''" style="float:right;margin-top: -20px;">Done</button></center>
+                                        <center><button class="btn btn-info bg-primary" ng-show="!(showSaveLoader)" ng-if="mode == 'editMode'" ng-click="updateCallMenuButton();menuBtnName =''" style="float:right;margin-top: -20px;">Done</button></center>
+                                    </div>
+                                    <!-- </form> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

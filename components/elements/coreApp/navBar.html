@@ -1,0 +1,35 @@
+<div ng-cloak ng-controller="navBarController" id="" style="background-color:#0973B5;height:65px;width:100%">
+    <div ng-click="reloadApp()" id="header-logo" style="cursor:pointer;width:150;opacity:1;height:65px">
+        <a class="logo-content-big" title="PLUG" style="background-image:url('assets/image-resources/logo.png');z-index:99;margin-top:-18px;">
+          PLUG <i>CHAT</i>
+          <span></span>
+        </a>
+    </div>
+    <ul style="margin-top: 0px;display: inline-block;list-style: none;padding: 0px;height: 65px;" class="tabs tabs-navigation">
+        <li class="panelActive" ng-class="{ 'panelActive': activePanel == 'chatPanel' }" ng-click="activePanel = 'chatPanel'" style="display: inline-block;float: left;margin-left:85px; clear: both;width:120px; height:100%;padding-top: 20px;color: white;cursor:pointer">
+            <a data-target="#chat-panel" data-toggle="tab" aria-expanded="false" style="color: white;cursor: pointer;text-decoration: none;padding-left: 40px; font-size:18px;padding-bottom: 30px;padding-top: 30px;padding-right: 40px;">Chat</a>
+        </li>
+        <li class="" ng-class="{ 'panelActive': activePanel == 'actionsPanel' }" ng-click="activePanel = 'actionsPanel'" style="float: left; width:120px; height:100%; padding-top: 20px;cursor:pointer;">
+            <a data-target="#actions-panel" data-toggle="tab" aria-expanded="false" style="color: white;cursor: pointer;text-decoration: none;cursor:pointer;padding-left:30px; padding-top: 30px;padding-right: 40px;font-size:18px;padding-bottom: 30px;">Actions</a>
+        </li>
+        <li class="" ng-class="{ 'panelActive': activePanel == 'learnPanel' }" ng-click="activePanel = 'learnPanel'" style="float: left; width:120px; height:100%; padding-top: 20px;cursor:pointer;">
+            <a data-target="#learn-panel" data-toggle="tab" aria-expanded="false" style="color: white;cursor: pointer;text-decoration: none;cursor:pointer;padding-left:30px; padding-top: 30px;padding-right: 40px;font-size:18px;padding-bottom: 30px;">Learn</a>
+        </li>
+    </ul>
+    <div id="page-name" class="btn-group pull-right" style="top:12px;right:1px;border-left: 2px solid #1c82e1;">
+        <button type="button" class="btn btn-default" style="background: none;color: white;border: none;font-size: 16px;padding-right:0px;">Connected to <b>{{selectedPageName}}</b></button> ​
+        <div class="btn-group">
+            <button id="btn-group-example" type="button" class="btn btn-default" style="border-radius:4px;background-color: #0973B5;border:none;" ng-click="openPageSelectionModal()">
+​
+                  <span class="caret" style="color:white"></span>
+              </button>
+            <!-- <ul style="margin-left:-125px" class="dropdown-menu" role="menu" aria-labelledby="btn-group-example">
+            <li><a ng-repeat="i in dropDownPages" ng-click="showPageContent(i.page_id)">{{i.name}}</a></li>
+            ​
+        </ul> -->
+        </div>
+        <button type="button" class="btn btn-default mrg20L glyph-icon icon-lock" ng-click="logout()" style="border:none;background-color: #0973B5;color:white"></button> ​
+    </div>
+    ​
+
+</div>

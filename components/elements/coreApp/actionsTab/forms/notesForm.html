@@ -1,0 +1,25 @@
+<div class="panel pops bounceIn animated br" id="popupWind" style="float:left;padding-top:0px;width:24%;max-width:350px;
+height:250px;margin-left: -10px;" ng-show="activeButtonForm == 'addNotesForm'">
+    <div class="popover-arrow" style="top:80px !important;"></div>
+    <div class="panel-body" style="margin-top: -25px;padding-right:10px;">
+        <!-- <i class="glyph-icon btn button tooltip-button opacity-hover icon-times float-left" title="Close" ng-click="closeEditButtonForm()" style="z-index:10;margin-top:-17px;font-size:20px;width:20px;height:20px; margin-right:-10px;cursor:pointer;border:none; margin-right:-1px"></i>
+                  <i class="glyph-icon btn button tooltip-button opacity-hover icon-linecons-trash float-right" title="Delete" ng-click="showMenuButtonForm = false" data-toggle="modal" data-target=".del779{{removeWhiteSpace(menuButtons[currentButton].Name)}}" style="z-index:10;margin-top:-17px;font-size:20px;width:20px;height:20px; margin-right:-10px;cursor:pointer;border:none; margin-right:-1px"></i> -->
+        <h4 class="case case-size" style="margin-bottom: 0px;">Action Notes <h4>
+        <form name="editButtonForm" class="form-horizontal bordered-row" id="editButtonForm" style="margin-top:1px">
+
+            <div class="form-group remove-border">
+                <div class="col-sm-6" style="width:100%">
+                    <span class="bs-badge badge-danger" ng-show="notesCountBadge==true" ng-style="{'background-color':20-notes.length > 5 ?  '#1BC492': '#c71f16'}" style="margin-top:20px;padding-left:-8px;position:absolute;font-size:10px;margin-top:-13px;color:white;margin-left:87%;border-radius:80%;"
+                        style="opacity:0.9">{{20 - notes.length}}</span>
+
+                    <textarea id="optionalNotes" class="form-control textarea-no-resize" rows="3" autocomplete="off" ng-model="notes" placeholder="Add notes" style="height:85px;"></textarea>
+                </div>
+            </div>
+            <div class="button-pane remove-border float-right" style="margin-top:199px;padding:0px;position:absolute;top:0;right:12px;">
+                <center><button class="btn btn-info bg-primary" ng-click="saveNotes(activeActionId);" style="float:right">Done</button></center>
+
+            </div>
+
+        </form>
+    </div>
+</div>

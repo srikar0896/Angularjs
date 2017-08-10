@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" ng-cloak ng-app="plugApp" ng-controller="plugController" style="height:100%">
+<script type="text/javascript" src="assets/js-core/jquery-core.js"></script>
+<script type="text/javascript" src="assets/js-core/jquery-ui-core.js"></script>
+<script type="text/javascript" src="assets/js-core/jquery-ui-widget.js"></script>
+<script type="text/javascript" src="assets/js-core/jquery-ui-mouse.js"></script>
+<script type="text/javascript" src="assets/js-core/jquery-ui-position.js"></script>
+<script type="text/javascript" src="assets/js-core/modernizr.js"></script>
+<script type="text/javascript" src="assets/js-core/jquery-cookie.js"></script>
+
+<!-- Angular Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular-animate.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.min.js"></script>
+<script src="https://unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+<script src="https://cdn.auth0.com/js/lock/10.0/lock.min.js"></script>
+
+
+<!-- Plug App Scripts -->
+<script type="text/javascript" src="app.js"></script>
+
+<!-- Directives -->
+<script type="text/javascript" src="components/directives/plugIncludes/plugIncludes.js"></script>
+<script type="text/javascript" src="components/directives/signup/signupDirectives.js"></script>
+<script type="text/javascript" src="components/directives/coreApp/generalDirectives.js"></script>
+<script type="text/javascript" src="components/directives/coreApp/chatTab/chatTabDirectives.js"></script>
+<script type="text/javascript" src="components/directives/coreApp/actionsTab/actionsTabDirectives.js"></script>
+<script type="text/javascript" src="components/directives/coreApp/actionsTab/formDirectives.js"></script>
+<script type="text/javascript" src="components/directives/actionNameValidator.js"></script>
+<script type="text/javascript" src="components/directives/shortcutValidator.js"></script>
+<script type="text/javascript" src="components/directives/limitDirective.js"></script>
+<script type="text/javascript" src="components/directives/restrictSpaceDirective.js"></script>
+<script type="text/javascript" src="components/directives/sbLoadDirective.js"></script>
+
+
+<!-- Controllers -->
+<script type="text/javascript" src="components/controllers/indexController.js"></script>
+<script type="text/javascript" src="components/controllers/signupController.js"></script>
+<script type="text/javascript" src="components/controllers/coreAppController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/navBarController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/fbPageSelectionModalController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/chatTab/timelineController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/chatTab/pubnubController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/chatTab/chatBoxController.js"></script>
+<script type="text/javascript" src="components/widgets/alertsController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/chatTab/chatActionsController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/actionsTab/actionPaletteController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/actionsTab/formsController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/actionsTab/forms/typeSelectorFormController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/actionsTab/forms/text/saveTextFormController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/actionsTab/forms/text/editTextFormController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/actionsTab/forms/superAction/saveSuperActionController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/actionsTab/forms/superAction/editSuperActionController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/actionsTab/forms/menu/editMenuController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/actionsTab/forms/menu/saveMenuController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/actionsTab/forms/image/saveImageController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/actionsTab/forms/image/editImageController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/actionsTab/forms/messengerProfile/getStartedController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/actionsTab/forms/messengerProfile/greetingTextController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/actionsTab/forms/messengerProfile/persistentMenuController.js"></script>
+<script type="text/javascript" src="components/elements/coreApp/actionsTab/forms/editFormSideBarController.js"></script>
+
+<!-- Routes -->
+<script type="text/javascript" src="components/routes/routes.js"></script>
+
+<!-- Services-->
+<script type="text/javascript" src="components/services/cacheService.js"></script>
+<script type="text/javascript" src="components/services/plugApiService.js"></script>
+<script type="text/javascript" src="components/services/fbPagesService.js"></script>
+<script type="text/javascript" src="components/services/timeService.js"></script>
+<script type="text/javascript" src="components/services/actionsAndCategoriesService.js"></script>
+<script type="text/javascript" src="components/services/alertService.js"></script>
+<script type="text/javascript" src="components/services/capitalizeService.js"></script>
+<script type="text/javascript" src="components/services/menuService.js"></script>
+<script type="text/javascript" src="components/services/messengerProfileService.js"></script>
+
+<!-- OtherScripts-->
+<script type="text/javascript" src="components/otherScripts/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script type="text/javascript" src="components/otherScripts/chosen-sort.js"></script>
+<script type="text/javascript" src="components/otherScripts/xeditable.js"></script>
+<script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+<script type="text/javascript" src="assets/angularjs-scroll-glue/src/scrollglue.js"></script>
+<script type="text/javascript" src="components/otherScripts/autogrow.js"></script>
+
+
+<!-- Styles -->
+<link rel="stylesheet" href="components/Styles/index.css">
+<link rel="stylesheet" href="components/Styles/signup.css">
+<link rel="stylesheet" href="components/Styles/timeline.css">
+<link rel="stylesheet" href="components/Styles/navBar.css">
+<link rel="stylesheet" href="components/Styles/actionsTab.css">
+<link rel="stylesheet" href="components/Styles/editable.css">
+<link rel="stylesheet" type="text/css" href="assets/widgets/chosen/chosen.css">
+
+<!-- All scripts and styleshhets related to Monach template -->
+<plug-includes></plug-includes>
+
+<body style="background-color:#0973B5">
+
+<ui-view ng-cloak></ui-view>
+
+</body>
+</html>

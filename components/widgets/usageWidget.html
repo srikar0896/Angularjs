@@ -1,0 +1,41 @@
+<div class="dd" id="nestable">
+    <ol class="dd-list" style="max-height:105px;width:100%;">
+        <li ng-repeat="i in actionHierarchyList" id="" class="dd-item collapse{{$index}}{{i.id}} dd-collapsed" style=""  data-id="1">
+            <div class="dd-handle" style="font-size:14px;width:100%">
+              <i class="glyph-icon font11 {{actionsAndCategoriesService.returnTypeById(i.id)}} mrg5R"  style="cursor:pointer;"></i>
+              <span ng-class="{ 'font-red': actionsAndCategoriesService.getStatusOfAction(i.id) == 'inactive' }">{{i.name}}</span>
+              <button ng-show="i.children.length > 0" class="glyph-icon font10 icon-plus font-grey pull-right" style="padding:0px;border: none;background: none;" ng-click="clicked(i.id,$index)" type="button"></button>
+            </div>
+            <ol class="dd-list">
+                <!-- <li class="dd-item" data-id="3"><div class="dd-handle "></div></li> -->
+                <li style="" ng-repeat="j in i.children" class="dd-item" data-id="5">
+                    <div class="dd-handle"><i class="glyph-icon font11 {{actionsAndCategoriesService.returnTypeById(j.id)}} mrg5R" style="margin-left:"></i><span ng-class="{ 'font-red': actionsAndCategoriesService.getStatusOfAction(j.id) == 'inactive' }">{{j.name}}</span></div>
+
+                    <ol class="dd-list">
+                        <li ng-repeat="k in j.children" class="dd-item" data-id="6">
+                            <div class="dd-handle"><i class="glyph-icon font11 {{actionsAndCategoriesService.returnTypeById(k.id)}} mrg5R" style="margin-left:"></i><span ng-class="{ 'font-red': actionsAndCategoriesService.getStatusOfAction(k.id) == 'inactive' }">{{k.name}}</span></div>
+                            <ol class="dd-list">
+                                <li ng-repeat="l in k.children" class="dd-item" data-id="6">
+                                    <div class="dd-handle"><i class="glyph-icon font11 {{actionsAndCategoriesService.returnTypeById(l.id)}} mrg5R" style="margin-left:"></i><span ng-class="{ 'font-red': actionsAndCategoriesService.getStatusOfAction(l.id) == 'inactive' }">{{l.name}}</span></div>
+                                    <ol class="dd-list">
+                                        <li ng-repeat="m in l.children" class="dd-item" data-id="6">
+                                            <div class="dd-handle"><i class="glyph-icon font11 {{actionsAndCategoriesService.returnTypeById(m.id)}} mrg5R" style="margin-left:"></i><span ng-class="{ 'font-red': actionsAndCategoriesService.getStatusOfAction(m.id) == 'inactive' }">{{m.name}}</span></div>
+                                            <ol class="dd-list">
+                                                <li ng-repeat="n in m.children" class="dd-item" data-id="6">
+                                                    <div class="dd-handle"><i class="glyph-icon font11 {{actionsAndCategoriesService.returnTypeById(n.id)}} mrg5R" style="margin-left:"></i><span ng-class="{ 'font-red': actionsAndCategoriesService.getStatusOfAction(n.id) == 'inactive' }">{{n.name}}</span></div>
+
+                                                </li>
+                                            </ol>
+                                        </li>
+                                    </ol>
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </li>
+
+
+    </ol>
+</div>

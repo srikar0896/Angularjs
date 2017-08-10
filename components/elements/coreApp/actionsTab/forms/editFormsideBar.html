@@ -1,0 +1,23 @@
+<div ng-controller="editFormSideBarController" style="z-index:0;float:left;position:relative;left:-30px" ng-style="{'left':(activeButtonForm == 'editButtonForm' || activeButtonForm ==  'addButtonForm')? '-348px':'-30px'}" ng-show="activeForm == 'editMenuForm' || activeForm == 'editTextForm' || activeForm == 'editSuperActionForm' || activeForm == 'editImageForm'">
+    <ul style="list-style:none;">
+        <li>
+            <button class="btn btn-default" style="height:65px;width:65px;cursor: not-allowed;background-color: lightgray;">
+                                        <i class="glyph-icon icon-magic" style="font-size:15x"></i>
+                                        <span style="margin-left:4px;float:left;font-size:12px;">Train</span>
+                                    </button>
+        </li>
+        <li>
+            <button class="btn btn-default" style="height:65px;width:65px" ng-click="addNotes()" ng-class="{'btn-primary':activeButtonForm=='addNotesForm'}">
+                                        <i class="glyph-icon icon-edit" style="font-size:15x"></i>
+                                        <span style="float:left;font-size:12px;">Notes</span>
+                                    </button>
+        </li>
+        <li>
+            <button class="btn btn-default" ng-class="{'btn-primary':activeButtonForm=='usageForm'}" style="height:65px;width:65px" ng-click="showUsage(activeActionId)">
+                                        <i class="fa fa-sitemap" style="font-size:15x"></i>
+                                        <span style="float:left;font-size:12px;">Usage</span>
+                                    </button>
+        </li>
+    </ul>
+
+</div>

@@ -1,0 +1,18 @@
+/* === Mobile devices - Portrait (375px wide) === */
+
+@media only screen and (max-width: 414px) {
+  html, body {
+  overflow: hidden;
+}
+  #centeredDiv{
+    height: 100% !important;
+    width: 100% !important;
+    top: 33% !important;
+    left: 0 !important;
+    margin: 0 !important;
+  }
+  #centeredDiv{
+    width: 100% !important;
+    height: 100% !important;
+  }
+}

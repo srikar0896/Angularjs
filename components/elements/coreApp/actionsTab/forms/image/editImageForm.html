@@ -1,0 +1,54 @@
+<div class="panel" ng-controller="editImageController" ng-show="activeForm == 'editImageForm'" style="float:left;position:relative;margin-left:24px;min-width:320px;width:320px;max-width:350px;height:520px">
+    <div class="panel-body">
+                <editform-inputs></editform-inputs>
+                <div class="panel" style="border:none;">
+                    <div class="panel-body" style="padding:0px;border:none;">
+                      <div>
+
+                        <input type="file" accept="image/*" id="editImgInp" class="inputfile"/>
+                        <label for="editImgInp" id="editImgLabel"><i class="glyph-icon tooltip-button demo-icon icon-cloud-upload" style="font-size: 20px;width: 40px;height: 20px;border:none;padding:0; margin-top:-8px;margin-left:0px; margin-right:0px; margin-bottom:0px;"></i>Edit Image</label>
+                          <br>
+                          <img sb-load="onImgLoad($event)" id="blah2"
+                          ng-src="{{previewImage}}" alt="your image" style="width:260px; height:200px;margin-top:10px"/>
+                            <div ng-show="imageLoader == true" class="spinners" style="margin-top:-108px;margin-bottom:-8px;margin-left: 120px;margin-right:10px;width:24px;height:24px;"></div>
+                      </div>
+                        <!-- <div class="example-box-wrapper">
+                            <form class="form-horizontal bordered-row">
+                                <div class="form-group remove-border">
+                                    <div class="col-sm-6" style="width:100%;margin-top:20px;">
+                                        <input type='file' id="editImgInp" />
+                                        <br>
+                                        <img id="blah2" src="{{previewImage}}" alt="your image" style="width:260px; height:200px;" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div> -->
+                    </div>
+                </div>
+
+
+                <!--   <div class="form-group">
+                             <div class="col-sm-6" style="width:100%">
+                                 <span class="float-right bs-badge badge-danger" ng-show="editImageNotesCountBadge==true" ng-style="{'background-color':200-editImageNotes.length > 15 ?  '#1BC492': '#c71f16'}" style="z-index:999;position:absolute;font-size:10px;margin-top:-13px;color:white;margin-left:88%;border-radius:80%;"
+                                     style="opacity:0.9">{{200 - editImageNotes.length}}</span>
+                                 <textarea ng-trim="false" name="" ng-focus="editImageNotesCountBadge =true" ng-blur="editImageNotesCountBadge =false" rows="2" data-parsley-maxlength="180" autocomplete="off" ng-model="editImageNotes" id="editImageNotes" class="form-control textarea-no-resize textarea-xs"
+                                     placeholder="Add Notes"></textarea>
+                             </div>
+                         </div> -->
+
+
+
+            </form>
+
+
+        </div>
+        <span class="savedLabel float-left bounceIn animated" ng-if="showImageSavedLabel == true" style="left:0;top:0;margin-top:482px;color: green;position: absolute;margin-left: 20px;"><i class="glyph-icon icon-check" style=""></i>saved</span>
+        <div class="button-pane remove-border float-right" style="margin-top:472px;padding:0px;right:25px;top:0;position:absolute;">
+            <div class="spinners" ng-show="showEditImageSaveLoader == true" style="margin-top:8px;margin-bottom:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+
+            <center><button class="btn btn-info bg-primary" ng-show="!(showEditImageSaveLoader)" ng-disabled="(denySubmitDueName == true || denySubmitDueSrt  == true) || actionName.length == 0 ||actionName.length >25 || actionShortcut.length >8 " ng-click="updateImageAction();" style="float:right">Save</button></center>
+
+        </div>
+
+    </div>
+</div>

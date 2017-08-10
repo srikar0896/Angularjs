@@ -1,0 +1,54 @@
+<div ng-controller="signupController">
+    <div class="image-content font-white" style="height: 60px;">
+        <div>
+            <img src="assets/image-resources/logo.png" alt="" class="meta-image" style="height: 60px;margin-left: 35%;">
+        </div>
+    </div>
+
+    <div ng-show="requestStatus == 'notSent'" style="width:100%;margin-left:10%;">
+        <form method="post" action="" data-parsley-validate="">
+            <div class="content-box" style="background-color: transparent;border: none;">
+                <div class="content-box-wrapper">
+                    <div class="form-group" style="color:white;font-size:18px;font-family: 'Raleway','Helvetica Neue','Helvetica','Arial','sans-serif'">
+                        <p style="opacity: 0.6;">In order to use PLUG, please sign up for our Beta program. If you have already signed up we will send you a message when your account is ready for use.</p>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="username" class="form-control" id="username" ng-model="username" placeholder="Your name" style="color:black;font-size:16px;font-family: 'Raleway','Helvetica Neue','Helvetica','Arial','sans-serif'">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="email" name="input" class="form-control error" ng-model="email" id="email" placeholder="The email on your Facebook account." style="color:black;font-size:16px;font-family: 'Raleway','Helvetica Neue','Helvetica','Arial','sans-serif'"
+                                required>
+                            <span class="error" ng-show="signupForm.input.$error.email" style="font-family:verdana;">Not valid email!</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="username" class="form-control" ng-model="pageName" id="pageName" placeholder="A link to your Facebook page" style="color:black;font-size:16px;font-family: 'Raleway','Helvetica Neue','Helvetica','Arial','sans-serif'" ;>
+
+                        </div>
+                    </div>
+
+                    <button class="btn btn-block" style="border-radius:0px;border: 1px solid white;background-color:transparent;color:white;font-size:16px;opacity:0.6" ng-click="signup()">Request Beta Access</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div ng-if="requestStatus == 'sending'" class="col-md-7 ng-scope" style="/* left:25%; */height:120px;/* border:2px solid #f5f5f5; */">
+        <div id="loading">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="requestStatus == 'sent'" class="col-md-7 ng-scope" style="width:100%;">
+        <div id="alertUser" class="alert alert-notice" style="width: 100%;top: 80px;background:transparent;">
+            <p style="font-size:18px;font-family: 'Raleway','Helvetica Neue','Helvetica','Arial','sans-serif';opacity: 0.6;text-align: center;color: white;">Thanks for signing up.<br> We will send you a message when your Plug account is ready for use.</p>
+        </div>
+    </div>
+</div>

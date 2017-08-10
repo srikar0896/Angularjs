@@ -1,0 +1,530 @@
+<div class="panel br" ng-controller="persistentMenuController" ng-show="activeForm == 'persistentMenuForm'" style="height:540px;float:left;position:relative;margin-left:15px;min-width:320px;width:auto;padding:10px;">
+  <h3 class="case case-size" style="padding-right: 3px;padding-left: 3px;">
+                     Persistent Menu
+                     </h3>
+<h2 style="font-size:12px;padding: 0;opacity: 0.7;margin: 0px;width: 640px;"> The Persistent Menu automates conversations with users bringing key content to the forefront, helping people navigate through content without being in a live chat.</h2>
+<div style="margin-top:-60px;float:right;">
+  <!-- ng-if="updatePerMenuStatusLoader == false && checkPerMenExists() && isPublishableBtn == true" -->
+ <label class="switch" style="margin:0px;">
+  <input id="togSwitch" type="checkbox" ng-change="toggleButton(this)" ng-model="st">
+  <div class="slider round"></div>
+</label>
+<div style="float:right;width:50px;margin-left:2px;padding-top:3px;">
+  <span ng-if="st == true">Enabled</span>
+  <span ng-if ="st == false">Disabled</span>
+</div>
+</div>
+<div ng-show="updatePerMenuStatusLoader == true" class="spinners float-right" style="
+    margin-top: -60px;
+    margin-bottom: -8px;
+    margin-right: 30px;
+    width: 24px;
+    height: 24px;"></div>
+<!-- <div ng-controller="SwitchDemoCtrl" ng-cloak>
+  <md-switch ng-model="data.cb1" aria-label="Switch 1">
+    Switch 1: {{ data.cb1 }}
+  </md-switch> -->
+<!-- <input type="checkbox" data-on-color="info" data-size="small" name="checkbox-example-2" class="input-switch" checked data-on-text="On" data-off-text="Off"> -->
+<!--  <i class="glyph-icon btn button tooltip-button opacity-hover icon-linecons-trash float-left" title="Close" ng-click="deletePersistentMenu()" style="z-index:10;
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
+        right: 10px;
+        position: absolute;
+        top: 0;
+        cursor: pointer;
+        border: none;"></i> -->
+
+          <!--  <label class="col-sm-3 control-label">Input switch alternate</label> -->
+          <!--  <div>
+                <input type="checkbox" class="input-switch-alt">
+            </div>-->
+
+
+
+  <!--  <div class="col-xs-1 sidenav">
+      <h4>{{appName}}</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <button type="button" class="btn btn-default" ng-click="toggleMenuFormVisibility ()">Set Menu</button>
+
+      </ul><br>
+    </div> -->
+    <div style="position:absolute;bottom:10px;right:15px;width:184px;z-index: -1;">
+    <button ng-if="!persistantMenuLoader" title="Save Persistent Menu" type="button" class="btn btn-info bg-primary" ng-click="setPersistantMenu()" style="width:88px;">Save</button>
+    <div ng-if="persistantMenuLoader" class="spinners" style="position: absolute;
+    bottom: -45px;
+    right: 75px;
+    width: 28px;
+    height: 28px;"></div>
+    <button ng-if="!publishLoader" title="Publish Persistent Menu" type="button" class="btn btn-info bg-primary" ng-click="publishMenu()" style="width:88px;float:right"
+    ng-disabled="isPublishableBtn == false">Publish</button>
+    <div ng-if="publishLoader" class="spinners" style="position: absolute;
+    bottom: -45px;
+    right: -20px;
+    width: 28px;
+    height: 28px;"></div>
+
+  </div>
+    <div id="entireDiv" style="margin-top:55px" style="height: 120px;
+    position: absolute;
+    bottom: 5px;">
+        <div id="firstPersistantForm" class="" style="height: auto;
+    border: none;
+    margin: 0px;
+    float: left;
+    margin-top: -40px;
+    position: relative;
+    width: auto;">
+        <!--  <div class="col-md-2"> -->
+        <div class="" id="firstMenuForm" style="width:210px;float:left;border-right: dashed 1px gray;">
+          <h3 class="case case-size" style="padding-right: 3px;padding-left: 3px; margin-left: 25px;font-size:14px">
+            Main Menu - Level One
+                             </h3>
+
+              <form  class="form-horizontal pad15L pad15R" style="width:200px;margin-top:59px;">
+                <!--   <div class="form-group" ng-repeat="x in menu.call_to_actions">
+                       <input type="text" class="form-control" id="title" ng-model="firstLevel.title" placeholder="Add a Option Label" ng-mouseover="" ng-click="setActiveLabel (firstLevel, 1)" ng-style="{'background-color':firstLevel == menu.call_to_actions[firstActiveAction] ?  'deepskyblue': 'white', 'color' : firstLevel == menu.call_to_actions[firstActiveAction] ? 'white' : 'black'}"> -->
+                      <!-- <div class=" col-sm-6 remove-border" style="width:100%"> -->
+
+                          <!-- <a class="btn btn-link font-blue" ng-click="" style="text-decoration:none;width:100%;cursor:pointer;" id=""> -->
+                                       <!-- {{x.title}} -->
+                                     <!-- </a>
+                          <span ng-if="x.actions.length>1">Actions:</span><span ng-if="x.actions.length<=1">Action:</span>
+                          <y ng-repeat="y in x.actions track by $index">
+                              <span style="background-color:#F3F2F2;font-size:12px;padding-left:2px;padding-right:2px;">{{y.ActionName}}</span>
+                              <z ng-if="$index < x.actions.length - 1" style="font-size:12px;">,</z>
+                          </y> -->
+                          <!-- <span class="font-red" ng-if="x.actions.length < 1" style="background-color:#F3F2F2;font-size:12px;padding-left:2px;padding-right:2px;">Not Assigned</span> -->
+                          <!-- <span ng-if="x.type=='phone_number'">Phone: </span><span ng-if="x.type=='phone_number'">{{x.payload["actions"][0]}}</span>
+                          <span ng-if="x.type=='web_url'">Url: </span><span ng-if="x.type=='web_url'">{{x.url}}</span> -->
+
+                      <!-- </div> -->
+
+                      <!-- <button title="Add another Button" type="button" class="btn btn-default" ng-show="firstLevel == menu.call_to_actions[menu.call_to_actions.length-1] && menu.call_to_actions.length <3" ng-click="addButton (menu.call_to_actions)"><span class="glyphicon glyphicon-plus"></span></button> -->
+                  <!-- </div> -->
+
+                  <x class="meButtonsf" ng-repeat="x in menu.call_to_actions track by $index" ng-click="setActiveLabel ($index,x, 1)" style="cursor:pointer">
+
+                      <div class="form-group button-pane" style="padding:0px;border:1px solid #EEEEEE">
+                        <div id= "{{firstActiveAction}},{{$index}}"class="col-sm-6"
+                        ng-class="{ 'activeMenuOption': firstActiveAction == $index }" style="width:100%">
+                              <a class="btn btn-link font-blue" ng-click="" style="text-decoration:none;width:100%;cursor:pointer;" id="">
+                                <span class="bs-badge badge-absolute bg-primary"
+                                style="font-family:'Raleway';background:#00A9F4;">Option {{$index+1}}</span>
+                                           {{x.title}}
+                                         </a>
+                                         <i class="glyph-icon btn button tooltip-button opacity-hover icon-linecons-trash float-right" title="Delete"  ng-if="x.type == 'nested' && firstActiveAction == $index" ng-click="deleteNestedMenuOption($index)"  style="
+                                          font-size: 16px;
+                                          width: 12px;
+                                          height: 12px;
+                                          right: 0;
+                                          margin-right: -10px;
+                                          cursor: pointer;
+                                          border: none;
+                                          top: -3px;
+                                          position: absolute;
+                                          margin-right: -1px;
+                                         "></i>
+                                         <v ng-if="x.type=='nested'">
+                               <span style="font-size:12px">Submenu</span>
+                            </v>
+                            <v ng-if="x.type=='web_url'">
+                  <span style="font-size:12px">URL</span>
+               </v>
+                                         <v ng-if="x.type=='postback'">
+                               <span>Action:</span>
+                                  <span style="background-color:#F3F2F2;font-size:12px;padding-left:2px;padding-right:2px;">{{getParsedName(x.payload)}}</span>
+                              <!-- <span class="font-red" ng-if="x.actions.length < 1" style="background-color:#F3F2F2;font-size:12px;padding-left:2px;padding-right:2px;">Not Assigned</span> -->
+<!--
+                              <span ng-if="x.type=='phone_number'">Phone: </span><span ng-if="x.type=='phone_number'">{{x.payload["actions"][0]}}</span>
+                              <span ng-if="x.type=='web_url'">Url: </span><span ng-if="x.type=='web_url'">{{x.url}}</span> -->
+                            </v>
+                          </div>
+                      </div>
+                      <span ng-if="x.type=='nested' && isValidSubmenu(x) == false" class="font-red">Please add an option.</span>
+
+                      <!-- <div class="modal fade {{x.title}}" tabindex="-1" id="modalLevelOne"role="dialog" style="" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-sm" style="width:35%;margin-top: 120px;">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                      <h4 class="modal-title">{{x.title}}</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p>Are you sure you want to delete <b>"{{x.title}}{{$index}}" </b> option.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-danger" data-dismiss="modal"  bottom: 0;
+                                      ng-click="deleteNestedMenuOption($index)">DELETE</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div> -->
+                  </x>
+
+                    <button title="Add another Button" type="button" class="btn btn-default" style="font-size: 12px;border-radius: 10px;margin-top: 5px;" ng-show="menu.call_to_actions.length <3" ng-click="openAddButtonForm (menu.call_to_actions,1)"><span class="glyphicon glyphicon-plus"></span> Add Menu Option ({{menu.call_to_actions.length + 1}}/3)</button>
+              </form>
+            </div>
+        <!--  </div> -->
+
+
+          <div id="secondMenuForm" class="" ng-show="form2Visibility" style="height:auto;float:left;position:relative;width:220px;float:left;    padding-left: 10px;border-right: dashed 1px gray;">
+            <h3 class="case case-size" style="padding-right: 3px;padding-left: 3px;margin-left: 25px;font-size:14px">
+              Sub Menu - Level Two
+
+                               </h3>
+              <div  class="input-group" style="margin-bottom: 10px;width: 96%;">
+                    <input id="submenuNameTwo"  type="text" class="form-control">
+                    <span class="input-group-addon" ng-click="editNestedOptionButtonName(1)">
+                      <i class="glyph-icon icon-check"></i>
+                    </span>
+
+               </div>
+            <form id="persistantMenuForm_2" class="form-horizontal pad15L pad15R" style="width:200px">
+                <!-- <div class="form-group" ng-repeat="secondLevel in menu.call_to_actions[firstActiveAction].call_to_actions">
+                      <input type="text" class="form-control col-xs-2" id="title" ng-model="secondLevel.title" placeholder="Add a Option Label" ng-mouseover="" ng-click="setActiveLabel (secondLevel, 2)" ng-style="{'background-color':secondLevel == menu.call_to_actions[firstActiveAction].call_to_actions[secondActiveAction] ?  'deepskyblue': 'white', 'color' : secondLevel == menu.call_to_actions[firstActiveAction].call_to_actions[secondActiveAction] ? 'white' : 'black'}" value="secondLevel.title"> -->
+                      <!-- <p>{{secondLevel.title}}</p> -->
+                      <!-- <button title="Add another Button" type="button" class="btn btn-default" ng-show="menu.call_to_actions[firstActiveAction].call_to_actions.length <5" ng-click="addButton (menu.call_to_actions[firstActiveAction].call_to_actions)"><span class="glyphicon glyphicon-plus"></span></button> -->
+                  <!-- </div> -->
+                  <x class="meButtonsf" ng-repeat="secondLevel in menu.call_to_actions[firstActiveAction].call_to_actions" ng-click="setActiveLabel ($index,secondLevel, 2)" style="cursor:pointer">
+
+                      <div class="form-group button-pane" style="padding:0px;border:1px solid #EEEEEE">
+                        <div class=" col-sm-6" style="width:100%" ng-class="{ 'activeMenuOption': secondActiveAction == $index}">
+                              <a class="btn btn-link font-blue" ng-click="" style="text-decoration:none;width:100%;cursor:pointer;" id="">
+                                  <span class="bs-badge badge-absolute bg-primary" style="font-family:'Raleway';background:#00A9F4">Option {{fLevelBut+1}}.{{$index+1}}</span>
+                                           {{secondLevel.title}}
+                                         </a>
+                                         <i class="glyph-icon btn button tooltip-button opacity-hover icon-linecons-trash float-right" title="Delete" ng-if="secondLevel.type == 'nested' && secondActiveAction == $index" ng-click="deleteNestedMenuOption($index)"
+                                          style="
+                                          font-size: 16px;
+                                          width: 12px;
+                                          height: 12px;
+                                          right: 0;
+                                          margin-right: -10px;
+                                          cursor: pointer;
+                                          border: none;
+                                          top: -3px;
+                                          position: absolute;
+                                          margin-right: -1px;
+                                         "></i>
+                                         <v ng-if="secondLevel.type=='nested'">
+                               <span style="font-size:12px">Submenu</span>
+                            </v>
+                            <v ng-if="secondLevel.type=='web_url'">
+                  <span style="font-size:12px">URL</span>
+               </v>
+                                         <v ng-if="secondLevel.type=='postback'">
+                                           <span>Action:</span>
+                                  <span style="background-color:#F3F2F2;font-size:12px;padding-left:2px;padding-right:2px;">{{getParsedName(secondLevel.payload)}}</span>
+                              <!-- <span class="font-red" ng-if="x.actions.length < 1" style="background-color:#F3F2F2;font-size:12px;padding-left:2px;padding-right:2px;">Not Assigned</span> -->
+<!--
+                              <span ng-if="x.type=='phone_number'">Phone: </span><span ng-if="x.type=='phone_number'">{{x.payload["actions"][0]}}</span>
+                              <span ng-if="x.type=='web_url'">Url: </span><span ng-if="x.type=='web_url'">{{x.url}}</span> -->
+                            </v>
+                          </div>
+                      </div>
+                      <span ng-if="secondLevel.type=='nested' && isValidSubmenu(secondLevel) == false" class="font-red">Please add an option.</span>
+
+                      <!-- <div class="modal fade {{secondLevel.title}}" id="modalLevelTwo" tabindex="-1" role="dialog" style="" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-sm" style="width:35%;margin-top: 120px;">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                      <h4 class="modal-title">{{secondLevel.title}}</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p>Are you sure you want to delete <b>"{{secondLevel.title}}" </b> option.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-danger" data-dismiss="modal"  bottom: 0;
+                                      ng-click="deleteNestedMenuOption($index)">DELETE</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div> -->
+
+                  </x>
+                            <button title="Add another Button" type="button" class="btn btn-default" style="font-size: 12px;border-radius: 10px;margin-top: 5px;" ng-show="menu.call_to_actions[firstActiveAction].call_to_actions.length <5" ng-click="openAddButtonForm (menu.call_to_actions[firstActiveAction].call_to_actions,2)"><span class="glyphicon glyphicon-plus"></span> Add Menu Option ({{menu.call_to_actions[firstActiveAction].call_to_actions.length + 1}}/5)</button>
+              </form>
+          </div>
+
+          <div class="" id="thirdMenuForm" ng-show="form3Visibility" style="float:left;width:210px;  padding-left: 10px;margin-right:10px;">
+            <h3 class="case case-size" style="padding-right: 3px;padding-left: 3px; margin-left: 20px;font-size:14px;">
+              Sub Menu - Level Three
+
+                               </h3>
+                               <div  class="input-group" style="margin-bottom: 10px;width:100%;">
+                                   <input id="subMenuNameThree"  type="text" class="form-control">
+                                   <span class="input-group-addon" ng-click="editNestedOptionButtonName(2)">
+                                         <i class="glyph-icon icon-check"></i>
+                                   </span>
+                                 </div>
+            <form id="persistantMenuForm_2" class="form-horizontal pad15L pad15R"  style="width:200px">
+                <!-- <div class="form-group" ng-repeat="thirdLevel in menu.call_to_actions[firstActiveAction].call_to_actions[secondActiveAction].call_to_actions">
+                      <input type="text" class="form-control col-xs-2" id="title" ng-model="thirdLevel.title" placeholder="Add a Option Label" ng-mouseover="" ng-click="setActiveLabel (thirdLevel, 3)" ng-style="{'background-color':thirdLevel == menu.call_to_actions[firstActiveAction].call_to_actions[secondActiveAction].call_to_actions[thirdActiveAction] ?  'deepskyblue': 'white', 'color' :thirdLevel == menu.call_to_actions[firstActiveAction].call_to_actions[secondActiveAction].call_to_actions[thirdActiveAction] ? 'white' : 'black'}">
+                      <button title="Add another Button" type="button" class="btn btn-default" ng-show="thirdLevel == menu.call_to_actions[firstActiveAction].call_to_actions[secondActiveAction].call_to_actions[menu.call_to_actions[firstActiveAction].call_to_actions[secondActiveAction].call_to_actions.length-1] && menu.call_to_actions[firstActiveAction].call_to_actions[secondActiveAction].call_to_actions.length <5" ng-click="addButton (menu.call_to_actions[firstActiveAction].call_to_actions[secondActiveAction].call_to_actions)"><span class="glyphicon glyphicon-plus"></span></button>
+                  </div> -->
+                  <x class="meButtonsf" ng-repeat="thirdLevel in menu.call_to_actions[firstActiveAction].call_to_actions[secondActiveAction].call_to_actions" ng-click="setActiveLabel ($index,thirdLevel, 3)" style="cursor:pointer">
+
+                      <div class="form-group button-pane" style="padding:0px;border:1px solid #EEEEEE">
+                        <div class=" col-sm-6" style="width:100%" ng-class="{ 'activeMenuOption': thirdActiveAction == $index }">
+                              <a class="btn btn-link font-blue" ng-click="" style="text-decoration:none;width:100%;cursor:pointer;" id="">
+                                  <span class="bs-badge badge-absolute" style="font-family:'Raleway';background:#00A9F4">Option {{fLevelBut+1}}.{{sLevelBut+1}}.{{$index+1}}</span>
+                                           {{thirdLevel.title}}
+                                         </a>
+                                         <i class="glyph-icon btn button tooltip-button opacity-hover icon-linecons-trash float-right" title="Delete" ng-if="thirdLevel.type == 'nested' && thirdActiveAction==$index" ng-click="deleteNestedMenuOption($index)" style="
+    font-size: 20px;
+    width: 20px;
+    right: 0;
+    height: 20px;
+    margin-right: -10px;
+    cursor: pointer;
+    border: none;
+    top: -3px;
+    position: absolute;
+    margin-right: -1px;
+                                         "></i>
+                                         <v ng-if="thirdLevel.type=='web_url'">
+                               <span style="font-size:12px">URL</span>
+                            </v>
+                                         <v ng-if="thirdLevel.type=='postback'">
+                                           <span>Action:</span>
+                                  <span style="background-color:#F3F2F2;font-size:12px;padding-left:2px;padding-right:2px;">{{getParsedName(thirdLevel.payload)}}</span>
+                              <!-- <span class="font-red" ng-if="x.actions.length < 1" style="background-color:#F3F2F2;font-size:12px;padding-left:2px;padding-right:2px;">Not Assigned</span> -->
+<!--
+                              <span ng-if="x.type=='phone_number'">Phone: </span><span ng-if="x.type=='phone_number'">{{x.payload["actions"][0]}}</span>
+                              <span ng-if="x.type=='web_url'">Url: </span><span ng-if="x.type=='web_url'">{{x.url}}</span> -->
+                            </v>
+                          </div>
+                      </div>
+                  </x>
+                  <button title="Add another Button" type="button" class="btn btn-default" style="font-size: 12px;border-radius: 10px;margin-top: 5px;" ng-show="menu.call_to_actions[firstActiveAction].call_to_actions[secondActiveAction].call_to_actions.length <5" ng-click="openAddButtonForm (menu.call_to_actions[firstActiveAction].call_to_actions[secondActiveAction].call_to_actions,3)"><span class="glyphicon glyphicon-plus"></span> Add Menu Option ({{menu.call_to_actions[firstActiveAction].call_to_actions[secondActiveAction].call_to_actions.length + 1}}/5)</button>
+              </form>
+          </div>
+      </div>
+      <!-- <div class="modal fade" id="delete" tabindex="-1" role="dialog" style="" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm" style="width:35%;margin-top: 120px;">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">{{x.title}}</h4>
+                  </div>
+                  <div class="modal-body">
+                      <p>Are you sure you want to delete <b>"{{x.title}}" </b> option.</p>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal"  bottom: 0;
+                      ng-click="deleteMenuOption()">DELETE</button>
+                  </div>
+              </div>
+          </div>
+      </div> -->
+      <div class="panel pops mrg15L bounceIn animated br" id="editPopupWindow" style="float:left;padding-top:0px;width: 280px;height:200px;margin-top: -40px;" ng-show="activePopup == 'editPopup'">
+          <div class="popover-arrow" id="persistantMenuEditArrow" ></div>
+          <div class="panel-body" style="margin-top:-30px;padding-top:0px;padding:10px;">
+              <i class="glyph-icon btn button tooltip-button opacity-hover icon-linecons-trash float-right" title="Delete" ng-click="deleteMenuOption()" style="z-index:10;    margin-top: 1px;font-size:20px;width:20px;height:20px; margin-right:-10px;cursor:pointer;border:none; margin-right:-1px"></i>
+              <form name="menuButtonForm" class="form-horizontal bordered-row" id="menuButtonForm">
+                  <div class="form-group remove-border" style="width:93%;padding-top: 5px;">
+                      <div class="col-sm-6" style="width:100%">
+                          <!-- <span class="bs-badge badge-danger" ng-show="menuBtnNameCountBadge==true" ng-style="{'background-color':20-menuBtnName.length > 5 ?  '#1BC492': '#c71f16'}" style="margin-top:20px;adding-left:-8px;position:absolute;font-size:10px;margin-top:-13px;color:white;margin-left:87%;border-radius:80%;"
+                              style="opacity:0.9">{{20 - menuBtnName.length}}</span> -->
+                          <span class="bs-badge badge-danger" ng-show="editPrstMenuBtnCountBadge==true" ng-style="{'background-color':20- editPrstMenuButName.length > 5 ?  '#1BC492': '#c71f16'}" style="padding-left:-8px;position:absolute;font-size:10px;margin-top:-13px;color:white;margin-left:80%;border-radius:80%;"
+                          style="opacity:0.9">{{20 - editPrstMenuButName.length}}</span>
+                          <input limit-to="20" type="text" class="form-control" id="editPrstMenuBtnName" ng-focus="editPrstMenuBtnCountBadge = true" ng-model = "editPrstMenuButName" ng-blur="editPrstMenuBtnCountBadge = false" autocomplete="off" placeholder="Add Option Label" style="font-size:13px">
+                      </div>
+                  </div>
+                  <div class="form-group remove-border" style="margin-top:-20px;padding-top: 3px;">
+                      <div class="col-sm-6" style="width:100%;padding:2px;">
+                          <div class="example-box-wrapper">
+                              <div id="form-wizard-1">
+                                  <ul id="editMenuTabs" class="nav-responsive nav nav-pills" style=" margin-bottom: 10px;padding-left:12px;font-size: 13px;">
+                                      <li style="cursor:pointer" class="active"><a data-target="#editTab1" data-toggle="tab"><i class="fa fa-superpowers" aria-hidden="true"></i>  Actions </a></li>
+                                      <li style="cursor:pointer"><a data-target="#editTab2" data-toggle="tab"><i class="glyph-icon icon-link" ></i> URL</a></li>
+                                      <li style="cursor:pointer" ng-if="depthForSub<=2">
+                                          <a data-target="#editTab3" data-toggle="tab"> <i class="fa fa-stack-exchange" style="font-size:15px;"></i> Submenu</a>
+                                      </li>
+                                  </ul>
+                                  <div class="tab-content">
+                                      <div class="tab-pane active" id="editTab1" style="padding-top: 0px;">
+                                          <!-- <form name="ButtonSelectForm" class="form-horizontal bordered-row" data-parsley-validate=""> -->
+                                          <div class="form-group remove-border">
+                                              <div class="col-sm-6" style="width:100%">
+                                                  <select id="editPersistentActions" chosen data-placeholder="Add actions" class="chosen-select" style="width:240px;">
+                                           <optgroup ng-repeat="cat in all" label="{{cat.Name}}">
+                                              <option ng-repeat="acts in cat.actions" ng-class="{ 'font-red disabled': getStatusOfAction(acts.ActionID) == 'inactive' }" value="{{acts.ActionID}}"> {{acts.ActionName}}</option>
+
+                                          </optgroup>
+                                         </select>
+                                              </div>
+
+                                          </div>
+                                          <span class="float-left" style='text-transform:lowercase;margin-top:10px;margin-left:20px;font-size:9px;color:Red;'ng-show="showEditDenyMessage == true" id="editActionPresenceOne">Please Select an action</span>
+                                          <span class="float-left" style='text-transform:lowercase;margin-top:10px;margin-left:20px;font-size:9px;color:Red;'ng-show="denyEditSaveMessageForName == true" id="editLabelPresenceOne">Please add an option label</span>
+
+                                          <div class="button-pane remove-border float-right" style="margin-top:-4px;padding:0px;">
+                                              <div class="spinners" ng-show="" style="margin-top:8px;margin-bottom:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+                                              <center><button class="btn btn-info bg-primary" ng-click="editOptionButton()" style="float:right;font-size: 13px;">Done</button></center>
+                                          </div>
+                                          <!-- </form> -->
+                                      </div>
+                                      <div class="tab-pane" id="editTab2" style="padding-top: 0px;">
+                                          <!-- <form name="urlForm" id="urlForm" class="form-horizontal bordered-row" data-parsley-validate=""> -->
+                                          <div class="form-group remove-border">
+                                            <div class="col-sm-6" style="width:100%">
+                                              <div class="input-group" style="width:100%;">
+                                                  <!-- <span class="input-group-addon">https://</span> -->
+                                                  <input id="editPerMenuUrl" type="text" class="form-control" placeholder="Enter a URL">
+                                              </div>
+                                            </div>
+
+                                          </div>
+                                          <span class="float-left" style='text-transform:lowercase;margin-top:10px;margin-left:20px;font-size:9px;color:Red;'ng-show="denyEditSaveMessageForNameUrl == true" id="editLabelPresenceTwo">Please add an option label</span>
+
+                                          <div class="button-pane remove-border float-right" style="margin-top:-4px;padding:0px;">
+                                              <div class="spinners" ng-show="showSaveLoader == true" style="margin-top:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+                                              <center><button class="btn btn-info bg-primary" ng-show="!(showSaveLoader)" ng-click="editUrlButton()" style="float:right; font-size: 13px;">Save</button></center>
+                                          </div>
+                                          <!-- </form> -->
+                                      </div>
+                                      <div class="tab-pane" id="editTab3" style="padding-top: 0px;" ng-if="depthForSubEdit<=2">
+
+                                          <h3 class="case-size" style="font-size:13px">Press <b>Done</b> to add a Sub Menu</h3>
+                                          <span class="float-left" style='text-transform:lowercase;margin-top:10px;margin-left:20px;font-size:9px;color:Red;'ng-show="denyEditSaveMessageForNameSubmenu == true" id="editLabelPresenceThree">Please add an option label</span>
+
+                                          <div class="button-pane remove-border float-right" style="margin-top:-4px;padding:0px;">
+                                              <div class="spinners" ng-show="showSaveLoader == true" style="margin-top:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+                                              <center><button class="btn btn-info bg-primary" ng-show="!(showSaveLoader)" ng-click="editNestedOptionButton()" style="float:right">Done</button></center>
+                                          </div>
+                                          <!-- </form> -->
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+
+      <div class="panel pops mrg15L bounceIn animated br" id="addPopupWindow" style="float:left;padding-top:0px;width: 280px;max-height: 220px;height: auto;
+    min-height:200px;margin-top: -40px;" ng-show="activePopup == 'addPopup'">
+          <div class="popover-arrow" id="persistantMenuArrow" ></div>
+          <div class="panel-body"  style="margin-top:-30px;padding-top:0px;padding:10px;">
+              <i class="glyph-icon btn button tooltip-button opacity-hover icon-linecons-trash float-right" title="Delete" ng-click="activePopup = ''" style="z-index:10;    margin-top: 1px;font-size:20px;width:20px;height:20px; margin-right:-10px;cursor:pointer;border:none; margin-right:-1px"></i>
+              <form name="menuButtonForm" class="form-horizontal bordered-row" id="menuButtonForm">
+                  <div class="form-group remove-border" style="width:93%;padding-top: 5px;">
+                      <div class="col-sm-6" style="width:100%">
+                          <!-- <span class="bs-badge badge-danger" ng-show="menuBtnNameCountBadge==true" ng-style="{'background-color':20-menuBtnName.length > 5 ?  '#1BC492': '#c71f16'}" style="margin-top:20px;adding-left:-8px;position:absolute;font-size:10px;margin-top:-13px;color:white;margin-left:87%;border-radius:80%;"
+                              style="opacity:0.9">{{20 - menuBtnName.length}}</span> -->
+                        <span class="bs-badge badge-danger" ng-show="prstMenuBtnCountBadge==true" ng-style="{'background-color':20- prstMenuButtonName.length > 5 ?  '#1BC492': '#c71f16'}" style="padding-left:-8px;position:absolute;font-size:10px;margin-top:-13px;color:white;margin-left:80%;border-radius:80%;"
+                              style="opacity:0.9">{{20 - prstMenuButtonName.length}}</span>
+                          <input limit-to="20" type="text" class="form-control" id="prstMenuBtnName" ng-focus="prstMenuBtnCountBadge = true" ng-blur="prstMenuBtnCountBadge = false" autocomplete="off" ng-model="prstMenuButtonName" placeholder="Add Option Label" style="font-size:13px">
+                      </div>
+                  </div>
+                  <div class="form-group remove-border" style="margin-top:-20px;padding-top: 3px;">
+                      <div class="col-sm-6" style="width:100%;padding:2px;">
+                          <div class="example-box-wrapper">
+                              <div id="form-wizard-1">
+                                  <ul id="addMenuTabs" class="nav-responsive nav nav-pills" style=" margin-bottom: 10px;padding-left:12px;font-size: 13px;">
+                                      <li style="cursor:pointer" class="active"><a data-target="#addTab1" data-toggle="tab"><i class="fa fa-superpowers" aria-hidden="true"></i>  Actions </a></li>
+                                      <li style="cursor:pointer"><a data-target="#addTab2" data-toggle="tab"><i class="glyph-icon icon-link" ></i> URL</a></li>
+                                      <li style="cursor:pointer" ng-if="depthForSub<=2">
+                                          <a data-target="#addTab3" data-toggle="tab" > <i class="fa fa-stack-exchange" style="font-size:15px;"></i> Submenu</a>
+                                      </li>
+                                  </ul>
+                                  <div class="tab-content">
+                                      <div class="tab-pane active" id="addTab1" style="padding-top: 0px;">
+                                          <!-- <form name="ButtonSelectForm" class="form-horizontal bordered-row" data-parsley-validate=""> -->
+
+                                          <div class="form-group remove-border">
+                                              <div class="col-sm-6" style="width:100%">
+                                                  <select id="perstMenuActions" chosen data-placeholder="Add actions" class="chosen-select" style="width:240px;">
+                                           <optgroup ng-repeat="cat in all" label="{{cat.Name}}">
+                                              <option ng-repeat="acts in cat.actions" ng-class="{ 'font-red disabled': getStatusOfAction(acts.ActionID) == 'inactive' }" value="{{acts.ActionID}}"> {{acts.ActionName}}</option>
+
+                                          </optgroup>
+                                         </select>
+                                              </div>
+                                                <span class="float-left" style='text-transform:lowercase;margin-top:10px;margin-left:20px;font-size:9px;color:Red;'ng-show="showDenyMessage == true" id="actionPresenceOne">Please Select an action</span>
+                                                <span class="float-left" style='text-transform:lowercase;margin-top:10px;margin-left:20px;font-size:9px;color:Red;'ng-show="denySaveMessageForName == true" id="labelPresenceOne">Please add an option label</span>
+                                          </div>
+                                          <div class="button-pane remove-border float-right" style="margin-top:-4px;padding:0px;">
+                                              <div class="spinners" ng-show="showSaveLoader == true" style="margin-top:8px;margin-bottom:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+                                              <center><button class="btn btn-info bg-primary"  id="addMenuSaveBtn" ng-show="!(showSaveLoader)" ng-click="addButton()" style="float:right">Done</button></center>
+                                          </div>
+                                          <!-- </form> -->
+                                      </div>
+                                      <div class="tab-pane" id="addTab2" style="padding-top: 0px;">
+                                          <!-- <form name="urlForm" id="urlForm" class="form-horizontal bordered-row" data-parsley-validate=""> -->
+                                          <div class="form-group remove-border">
+                                            <div class="col-sm-6" style="width:100%">
+                                              <div class="input-group" style="width:100%;margin-top:0px;">
+                                                  <!-- <span class="input-group-addon">https://</span> -->
+                                                  <input type="text" class="form-control" id="perMenuUrl" placeholder="Enter a URL">
+                                              </div>
+                                            </div>
+                                            <span class="float-left" style='text-transform:lowercase;margin-top:10px;margin-left:20px;font-size:9px;color:Red;'ng-show="denySaveMessageForNameUrl == true" id="labelPresenceTwo">Please add an option label</span>
+                                          </div>
+
+                                          <div class="button-pane remove-border float-right" style="margin-top:-4px;padding:0px;">
+                                              <div class="spinners" ng-show="showSaveLoader == true" style="margin-top:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+                                              <center><button class="btn btn-info bg-primary" ng-show="!(showSaveLoader)" ng-click="addUrlButton()" style="float:right">Save</button></center>
+                                          </div>
+                                          <!-- </form> -->
+                                      </div>
+                                      <div class="tab-pane" id="addTab3" style="padding-top: 0px;" ng-if="depthForSub<=2">
+                                          <!-- <form name="urlForm" id="urlForm" class="form-horizontal bordered-row" data-parsley-validate=""> -->
+                                          <h3 class="case-size" style="font-size:13px">Press <b>Done</b> to add a Sub Menu</h3>
+                                          <span class="float-left" style='text-transform:lowercase;margin-top:10px;font-size:9px;color:Red;'ng-show="denySaveMessageForNameSubmenu == true" id="labelPresenceThree">Please add an option label</span>
+                                          <div class="button-pane remove-border float-right" style="margin-top:-4px;padding:0px;">
+                                              <div class="spinners" ng-show="showSaveLoader == true" style="margin-top:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+                                              <center><button class="btn btn-info bg-primary" ng-show="!(showSaveLoader)" ng-click="addNestedButton()" style="float:right">Done</button></center>
+                                          </div>
+                                          <!-- </form> -->
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+
+    </div>
+
+
+<!--  <div style = "position:absolute;right:15px;bottom:60px;width: 260px;">
+      <div style="">
+        <button type="button" class="btn btn-info bg-primary" ng-click="addNestedButton ()" ng-show="nestButton" style="margin-top: -80px;margin-left: -120px;">Add Sub Menu</button>
+        <button type="button" class="btn btn-info bg-primary" ng-click="addActionToButton ()" ng-show="actionButton">Add New Action</button>
+         <select ng-options="action.name for action in actions"></select>
+            </div>
+  </div> -->
+  <div style="position:absolute;height:120px;bottom:85px;">
+    <div ng-show="actionDropDown" style = "width:300px; margin-top: 30px;">
+    <select id="persistantMenuActions" chosen data-placeholder="Choose actions" class=" chosen-select" style="width:300px">
+                        <optgroup ng-repeat="cat in all" label="{{cat.Name}}">
+          <!--ng-disabled="!{{acts.Type == 'text'}}" --> <option ng-class="{ 'font-red disabled': getStatusOfAction(acts.ActionID) == 'inactive' }" ng-if="acts.Type== 'text' || acts.Type=='menu' || acts.Type=='image'" title="getStatusOfAction(acts.ActionID) + ' Action'" ng-repeat="acts in cat.actions" value="{{acts.ActionID}}" >{{acts.ActionName}}</option>
+                       </optgroup>
+
+    </select>
+  </div>
+    <button type="button" class="btn btn-info bg-primary" style="margin-top:10px" ng-click="addPayloadToButton ()" ng-show="actionDropDown">Save Action</button>
+
+  </div>
+
+</div>
+
+<script type="text/ng-template" id="modals/disablePublishforMessengerProfileModal">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Enable Toggle</h3>
+    </div>
+    <div class="modal-body">
+      <h4>Please Enable toggle in order to publish the messenger profile.</h4>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" type="button" ng-click="closeModal()">OK</button>
+    </div>
+
+</script>

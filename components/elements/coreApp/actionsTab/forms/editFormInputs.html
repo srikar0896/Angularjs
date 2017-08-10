@@ -1,0 +1,59 @@
+<button class=" btn button glyph-icon icon-linecons-trash font-black float-right opacity-hover" ng-click="deleteAction()" style="z-index: 10;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  right: 3px;
+  position: absolute;
+  top: 0;
+  background:none;
+  cursor: pointer;
+  border: none;"></button>
+
+<h3 class="case case-size" style="padding-right: 3px;">
+            <i class="glyph-icon icon-comment font-grey"  style="margin-top:-5px;width:12px;margin-right:16px;margin-bottom:-5px;height:12px;border:none;cursor:pointer;font-size:18px; margin-right:10px;"></i>{{actionName}} - {{actionCat}} group
+                   </h3>
+<div class="example-box-wrapper">
+
+  <form name="saveTextForm" id="createForm" class="form-horizontal pad15L pad15R bordered-row" data-parsley-validate="">
+
+      <div class="form-group remove-border">
+
+          <div class="col-sm-6" style="width:55%">
+              <span class="bs-badge badge-danger" ng-show="viewNameCountBadge==true" ng-style="{'background-color':25-actionName.length > 5 ?  '#1BC492': '#c71f16'}" ng-model="nameCount" style="padding-left:-8px;position:absolute;font-size:10px;margin-top:-13px;color:white;margin-left:75%;border-radius:80%;"
+                  style="opacity:0.9">{{25 - actionName.length}}</span>
+              <input
+                name ="actionNameFeild"
+                limit-to="25" type="text"
+                required ng-model="actionName" minlength="0"
+                ng-model-options="{ updateOn: 'default onBlur'}"
+                alternateactionname-validator
+                class="form-control"
+                ng-focus="viewNameCountBadge = true;showActionNameStatus=true"
+                ng-blur="viewNameCountBadge = false;showActionNameStatus=false"
+                autocomplete="off" id="actionName"
+                placeholder="Add Action name" style="float:left" ng-trim="false"
+                ng-style="{'border':denySubmitDueName == false? '1px solid #ccc':'1px solid rgb(244, 67, 54)'}">
+              <span class="float-left {{actionNameNotificationType}}" style='margin-top:10px;margin-left:5px;font-size:9px;' id="actionNameAvail" ng-if="showActionNameStatus == true && actionName.length>0">{{actionNameAvailabilty}}</span>
+          </div>
+
+          <div class="col-sm-6" style="width:45%;padding-left:0px;">
+              <div class="input-group">
+                  <span class="input-group-addon">//</span>
+
+                  <input limit-to="8" restrictspace type="text"
+                    ng-focus="viewShortcutCountBadge=true;showActionShortcutStatus=true"
+                    ng-blur="viewShortcutCountBadge =false;showActionShortcutStatus=false"
+                    ng-model="actionShortcut" class="form-control"
+                    ng-model-options="{ updateOn: 'default'}"
+                    alternateshortcut-validator
+                    id="actionShortcu" autocomplete="off"
+                    style="text-transform:lowercase;" placeholder="Shortcut"
+                    ng-style="{'border':denySubmitDueSrt == false? '1px solid #ccc':'1px solid rgb(244, 67, 54)'}">
+                  <span class="float-right bs-badge badge-danger" ng-show="viewShortcutCountBadge==true" ng-style="{'background-color':8-actionShortcut.length > 3 ?  '#1BC492': '#c71f16'}" style="z-index:999;position:absolute;font-size:10px;margin-top:-13px;color:white;margin-left:-9%;border-radius:80%;"
+                      style="opacity:0.9">{{8 - actionShortcut.length}}</span>
+
+              </div>
+              <span class="float-left {{actionShortcutNotificationType}}" style='text-transform:lowercase;margin-top:10px;font-size:9px;color:green;' id="availabilityStatus" ng-if="showActionShortcutStatus == true && actionShortcut.length>0">{{actionShortcutAvailabilty}}</span>
+          </div>
+
+      </div>

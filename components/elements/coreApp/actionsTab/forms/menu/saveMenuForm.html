@@ -1,0 +1,53 @@
+<div class="panel br" ng-controller="saveMenuController" ng-show="activeForm == 'saveMenuForm'" style="height:520px;float:left;position:relative;margin-left:24px;min-width:320px;width:320px;max-width:350px;">
+    <div class="panel-body">
+                <saveform-inputs></saveform-inputs>
+                <div class="form-group" style="padding-top:12px;padding-bottom:12px;">
+                    <div class="col-sm-6" style="width:100%">
+                        <span class="float-right bs-badge badge-danger" ng-show="menuMsgCountBadge==true" ng-style="{'background-color':640-menuMsg.length > 15 ?  '#1BC492': '#c71f16'}" style="z-index:999;position:absolute;font-size:10px;margin-top:-13px;color:white;margin-left:88%;border-radius:80%;"
+                            style="opacity:0.9">{{640 - menuMsg.length}}</span>
+                        <textarea ng-style="{'border':menuMsg.length<641? '1px solid #ccc':'1px solid rgb(244, 67, 54)'}" limit-to="640" style="height:90px;" ng-trim="false" name="" required rows="3" ng-focus="menuMsgCountBadge =true" ng-blur="menuMsgCountBadge =false" id="menuMsg" ng-model="menuMsg" class="form-control textarea-no-resize textarea-sm" placeholder="Add the message you want to send your users."
+                            + <br> +"The message must not exceed 640 charecters"></textarea>
+                    </div>
+                </div>
+                <x class="menuButtonsf" ng-repeat="x in menuButtons track by $index" style="cursor:pointer">
+                    <div class="form-group button-pane" style="padding:0px;border-top:1px dashed #EEEEEE" ng-click="editButton($index)" ng-show="menuButtons.length > 0">
+                        <div class=" col-sm-6 remove-border" style="width:100%">
+                            <a class="btn btn-link font-blue" ng-click="" style="text-decoration:none;width:100%;cursor:pointer;" id="">
+                                 {{x.Name}}
+                             </a>
+                            <span ng-if="x.actions.length>1">Actions:</span><span ng-if="x.actions.length<=1">Action:</span>
+                            <y ng-repeat="y in x.actions track by $index">
+                                <span style="background-color:#F3F2F2;font-size:12px;padding-left:2px;padding-right:2px;">{{y.ActionName}}</span>
+                                <z ng-if="$index < x.actions.length - 1" style="font-size:12px;">,</z>
+                            </y>
+                            <span class="font-red" ng-if="x.actions.length < 1" style="background-color:#F3F2F2;font-size:12px;padding-left:2px;padding-right:2px;">Not Assigned</span>
+
+                            <span ng-if="x.type=='phone_number'">Phone: </span><span ng-if="x.type=='phone_number'">{{x.payload}}</span>
+                            <span ng-if="x.type=='web_url'">Url: </span><span ng-if="x.type=='web_url'" style="word-wrap: break-word;">{{x.url}}</span>
+
+                        </div>
+                    </div>
+                </x>
+                <div class="form-group button-pane">
+                    <div class="remove-border mrg20T" style="width:100%">
+                        <!-- <x ng-repeat="y in fakeButton" style="display:inline-block;"> -->
+                            <a ng-show="newButtonOption==false" class="btn btn-link font-black mrg20T" ng-click="" style="width:100%; text-decoration:none;" id="">
+                                     {{menuBtnName || 'Untitled Button'}}
+                                   </a>
+                        <!-- </x> -->
+                    </div>
+
+                    <div class="col-sm-6 mrg20T" style="width:100%" ng-click="addMenuButton();menuBtnName=''">
+                        <a class="btn btn-link font-black opcacity-hover addNewBlockBtn" ng-if="menuButtons.length < 3" ng-show="newButtonOption==true" style="text-decoration:none;width:100%;cursor:pointer"><i class="glyph-icon mrg5R icon-plus tooltip-button"></i>NEW MENU OPTION</a>
+                    </div>
+                </div>
+        </div>
+        <div class=" button-pane remove-border float-right" style="margin-top:472px;padding:0px;position:absolute;right:25px;top:0;">
+            <div class="spinners" ng-show="showMenuSaveLoader == true" style="margin-top:8px;margin-bottom:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+            <center><button class="btn btn-info bg-primary" ng-disabled="(denySubmitDueName == true || denySubmitDueSrt  == true) || menuMsg.length>640 || menuMsg.length == 0 || actionName.length == 0 ||actionName.length >25 || actionShortcut.length >8" ng-show="!(showMenuSaveLoader)" ng-click="saveMenu();" style="float:right">Save</button></center>
+        </div>
+
+        </form>
+
+    </div>
+</div>

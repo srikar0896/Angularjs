@@ -1,0 +1,34 @@
+<div class="example-box-wrapper float-left" ng-controller="typeSelectorFormController" ng-show="activeForm == 'typeSelectorForm'" style="width:645px;">
+
+    <div class="content-box dashboard-buttons br clearfix" style="margin-left:15px;width:64%;">
+        <h4 align="left" style="margin-left:18px;">Select Action Type</h4>
+        <a class="btn vertical-button hover-primary bg-white" ng-mouseenter="textHovering=true" ng-mouseleave="textHovering=false" ng-click="actionType('text')" style="margin-left:6px;">
+            <span class="glyph-icon icon-separator-vertical">
+                                                     <i class="glyph-icon icon-comment" ng-style="{'color':textHovering ==true ?  'white': '#424242'}"></i>
+                                                 </span>
+            <span class="button-content font-black">Text</span>
+        </a>
+        <a class="btn vertical-button hover-primary bg-white" ng-mouseenter="menuHovering=true" ng-mouseleave="menuHovering=false" ng-click="actionType('menu')">
+            <span class="glyph-icon icon-separator-vertical">
+                                  <i class="fa fa-stack-exchange" aria-hidden="true" ng-style="{'color':menuHovering ==true ?  'white': '#424242 '}"></i>
+
+                                </span>
+            <span class="button-content font-black">Menu</span>
+        </a>
+
+        <a class="btn vertical-button hover-primary bg-white" ng-mouseenter="actionHovering=true" ng-mouseleave="actionHovering=false" ng-click="actionType('superaction')">
+            <span class="glyph-icon icon-separator-vertical">
+                                  <i class="fa fa-bolt" aria-hidden="true" ng-style="{'color':actionHovering ==true ?  'white': '#424242 '}"></i>
+                                   <!-- <i class="glyph-icon icon-bolt" ng-style="{'color':actionHovering ==true ?  'white': '#424242 '}"></i> -->
+                                </span>
+            <span class="button-content font-black" style="font-size:12px">Super Action</span>
+        </a>
+        <a class="btn vertical-button hover-primary bg-white" ng-mouseenter="imageHovering=true" ng-mouseleave="imageHovering=false" ng-click="actionType('image')">
+            <span class="glyph-icon icon-separator-vertical">
+                                                     <i class="glyph-icon icon-image" ng-style="{'color':imageHovering ==true ?  'white': '#424242'}"></i>
+                                                 </span>
+            <span class="button-content font-black">Image</span>
+        </a>
+
+    </div>
+</div>

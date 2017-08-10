@@ -1,0 +1,93 @@
+<div id="timeline" ng-controller="timelineController" class="tab float-left" style="width:27%;max-width:380px;height:100%;left:0;overflow-x:hidden;overflow-y:hidden;margin-top:-13px;background-color:#f5f5f5;">
+    <div ng-controller="pubnubController"></div>
+    <h4 style="font-size:16px;margin-top:17px;margin-left:7px;text-transform:capitalize;float:left; margin-bottom: 0px;">Queue</h4>
+    <div class="btn-group float-right" uib-dropdown is-open="status.isopen" style="margin-right:25px">
+      <ul class="nav-responsive nav nav-tabs no-border">
+                      <li class="dropdown pull-right tabdrop"><a class="dropdown-toggle" data-toggle="dropdown">{{activeTab}}<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        <li ng-click="activeTab = 'Timeline'"><a data-target="#home" data-toggle="tab">Timeline</a></li>
+                        <li ng-click="activeTab = 'Followers'"><a data-target="#profile" data-toggle="tab">Followers</a></li>
+
+                      </li>
+        </ul>
+    </div>
+
+    <input ng-model="tabSearch" type="text" class="form-control" id="searchBar" style="margin-top:0px;background-color:#f5f5f5;margin-left: 7px; width:86%" placeholder="Search (Coming Soon)">
+
+    <div class="panel" style="margin-left:10px;height:100%;width:98%;background-color:#f5f5f5;border:none;">
+        <div class="panel-body" style="margin-top:20px;height:100%;width:100%;background-color:#f5f5f5;
+        padding:0px">
+            <div class="example-box-wrapper" style="width:100%;height:90%;overflow-y:scroll;padding-top:8px;">
+
+                <div id="myTabContent" class="tab-content" style="left:0; margin-top:-18px;">
+                    <h5 ng-if="timelineItems.length==0 && !showLoader" style="margin-top:10%;margin-left:30%;">No Conversation to show</h5>
+
+                    <div class="tab-pane fade active in" id="home" style="margin-left:0px; padding:0px;">
+
+
+
+                        <div class="example-box-wrapper" style="margin-bottom:50px;z-index:999;background-color:#f5f5f5;">
+                            <div ng-show="showLoader" class="spinners" style="width:30px;height:30px;margin-top:10%;margin-left:48%;font-size:20px;"></div>
+                            <div class="timeline-box br timeline-box-left">
+
+                                <div class="tl-row" ng-repeat="timelineItem in timelineItems track by $index | orderBy:'Date':true">
+                                    <div class="tl-item float-right">
+                                        <div class="tl-icon bg-primary">
+                                            <img class="img-circle" width="36" ng-src="{{timelineItem.profile_pic}}" alt="" style="height:42px;border-radius:50px;margin-top:-4px">
+                                        </div>
+                                        <div class="popover right" style="background-color:#f5f5f5">
+                                            <div class="arrow" ng-class="{'activeArrow':timelineItem.userid == activeUserId}"></div><!-- -->
+                                            <div class="popover-content timeline-clickable timelineContent" ng-click="showchatLoader = true;updateScrollableChatBox(timelineItem.userName,timelineItem.userid,timelineItem.PageID,timelineItem.profile_pic,timelineItem.kind);"
+                                                style="word-wrap: break-word;padding-bottom: 5px;padding-top: 5px;" ng-style="{'background-color':timelineItem.userid == activeUserId ? 'white':'#f5f5f5'}">
+                                                <!--   -->
+                                                <p id="pageName"><span><b>{{checkMessageKind(timelineItem.kind)}}</b>{{timelineItem.userName}}</span></p>
+                                                <div class="float-right btn tooltip-button" style="margin-top:-10px;margin-right:-10px;">
+                                                    <a id="iconm" class="glyph-icon font-gray tooltip-button {{messageIconType(timelineItem.kind)}}" data-placement="left" style="margin-top:-30px;position:absolute">
+
+                                                    </a>
+                                                </div>
+
+                                                <p ng-if="timelineItem.Type == 'text'" class="tl-content" style="margin-bottom: 5px;">{{trimMessage(timelineItem.Msg)}}</p><!---->
+
+                                                <y ng-if="timelineItem.Type == 'image'">
+                                                    <i class="glyph-icon icon-image font-grey" style="margin-bottom:10px;"></i><span> - Image</span>
+                                                </y>
+
+                                                <y ng-if="timelineItem.Type == 'menu'">
+                                                    <i class="fa fa-stack-exchange" style="margin-bottom:10px;"></i><span> - Menu</span>
+                                                </y>
+
+                                                <div class="tl-time" style="font-size:11.5px">
+                                                    <i class="glyph-icon icon-clock-o" style=""></i> {{convertDate(timelineItem.Date)}} <span style="font-size:12px;" ng-if="timelineItem.kind == 'outbound'"> - {{timelineItem.plug_user_name.split(' ')[0].toLowerCase()}}</span>
+                                                    <!--  -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="tab-pane fade" id="profile" style="padding:0px;    margin-top: 10px;">
+                        <div class="scrollable-content scrollable-sm scrollable-medium" style="height:480px;">
+                            <div class="list-group" style="background-color;#f5f5f5;">
+                                <a style="cursor:pointer;border:none;padding-bottom:6px; padding-top:6px;" class="list-group-item" title="" ng-repeat="i in userIds track by $index" ng-style="{'background-color':activeUserId == i ? 'white':'#f5f5f5'}"
+                                    ng-click='updateScrollableChatBox(getUserNames(i),i,selectedPage.page_id,getDp(i))'>
+                                    <img class="img-circle" width="40" ng-src="{{getDp(i)}}" style="margin-right:15px;height:42px;border-radius:50px" alt=""> {{getUserNames(i)}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,127 @@
+<div ng-controller="actionPaletteController" class="content-box-wrapper" style="width:27%; height: 100%;background-color:#fafbfc;max-height: 110%;margin-top: -14px;padding-left:15px;margin-left: -12px;padding-right:14px;padding-top: 20px;min-width:320px; float:left;">
+    <h4>Action Palette</h4>
+
+    <div class="font-size-12" style="margin-right:10px">
+        <div class="popover-wrapper float-right" ng-show="ShowNewGroupBtn == true && selectedPage.page_id.length>0" style="cursor:pointer;border:none;margin-top:-26px;">
+            <a class="font-black opacity-hover" style="border:none;cursor:pointer;font-style:normal;" onbeforesave="createCategory($data)" editable-text="preText.name">
+                <i class="glyph-icon mrg5R icon-plus tooltip-button"></i> New Group</a>
+        </div>
+        <div class="float-right bounceIn animated" style="width:100px;" ng-show="ShowNewGroupBtn == false">
+            <span class="float-left" style="margin-left:36px;color:#109121;margin-top:-28px;">Saving</span>
+            <div class="float-right glyph-icon icon-spin-5 icon-spin" style="color:#109121;margin-top:-34px;font-size:20px;"></div>
+        </div>
+    </div>
+
+    <div style="margin-bottom:14px;width:100;height:93%;min-width:300px;overflow-y:scroll;" ng-if="selectedPage.page_id.length > 0">
+        <div class="example-box-wrapper float-left" style="width:100%;min-height:460px;overflow-x:hidden">
+            <div class="panel-group cats" id="accordio">
+              <!-- ng-if="pageId.length>0 && !changingPage" --><div class="panel" style="border:none;margin-left: 2px;">
+                    <i class="handle fa fa-folder mrg5R font-black opacity-hover float-left" ng-show="stc" aria-hidden="true" style="cursor:s-resize;border:none;width:12px;height:12px;margin-left:5px;margin-top:12px;font-size:13px;"></i>
+                    <i class="handle fa fa-folder-open mrg5R font-black opacity-hover float-left" ng-show="!stc" aria-hidden="true" style="cursor:s-resize;border:none;width:12px;height:12px;margin-left:5px;margin-top:12px;font-size:13px;"></i>
+                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#perMenuCat" style="cursor:pointer;border:none;background-color:#fafbfc" ng-click="stc = !stc">
+                        <h3 class="panel-title" style="margin-left:8px">
+                            <a style="text-decoration:none;">
+                              Messenger Profile for <b>{{selectedPage.name}}</b>
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="perMenuCat" class="panel-collapse collapse Collapse in">
+                        <div class="panel-body" style="padding:10px;border:none;background-color:#fafbfc">
+                            <button id="perMenuButton" class="btn btn-default" ng-click="openMessengerProfile('persistentMenu')" style="border-radius:10px;height:35px;margin-bottom:12px;margin-right:8px;">
+                                   <i class="fa fa-facebook" style="margin-right:4px;font-size:12px;"></i>Persistent Menu
+                            <!-- <div class="float-right actionBadge" ng-show="activeForm == 'showPersistantMenu'" style="width:6px;height:6px;border:0.1px solid;border-radius:50%;margin-right:-14px;margin-top:-4px;background:#30e849"></div> -->
+                          </button>
+                            <button id="perMenuButton" class="btn btn-default" style="border-radius:10px;height:35px;margin-bottom:12px;margin-right:8px;" ng-click="openMessengerProfile('greetingText')">
+                                         <i class="fa fa-facebook" style="margin-right:4px;font-size:12px;"></i>Greeting Text
+                                  <!-- <div class="float-right actionBadge" ng-show="activeForm == 'showPersistantMenu'" style="width:6px;height:6px;border:0.1px solid;border-radius:50%;margin-right:-14px;margin-top:-4px;background:#30e849"></div> -->
+                                </button>
+                            <button id="perMenuButton" class="btn btn-default" style="border-radius:10px;height:35px;margin-bottom:12px;margin-right:8px;" ng-click="openMessengerProfile('getStartedButton')">
+                                               <i class="fa fa-facebook" style="margin-right:4px;font-size:12px;"></i>Get Started Button
+                                        <!-- <div class="float-right actionBadge" ng-show="activeForm == 'showPersistantMenu'" style="width:6px;height:6px;border:0.1px solid;border-radius:50%;margin-right:-14px;margin-top:-4px;background:#30e849"></div> -->
+                                      </button>
+                            <button id="perMenuButton" class="btn btn-default" style="border-radius:10px;height:35px;margin-bottom:12px;margin-right:8px;    cursor: not-allowed;background-color: lightgray;">
+                                                     <i class="fa fa-facebook" style="margin-right:4px;font-size:12px;"></i>Whitelist Domain
+                                              <!-- <div class="float-right actionBadge" ng-show="activeForm == 'showPersistantMenu'" style="width:6px;height:6px;border:0.1px solid;border-radius:50%;margin-right:-14px;margin-top:-4px;background:#30e849"></div> -->
+                                            </button>
+                            <!-- <button id="perMenuButtons" class="btn" ng-repeat = "i in persistantMenus" ng-click="openMessengerProfile(i.MenuID)" style="border:none;background-color:#2196f3 ;color:white;font-size:12px;margin-bottom:12px;margin-right:5.5px;height:35px;border-radius:10px;padding-left:25px;padding-right:25px">
+                                  <i class="glyph-icon mrg5R fa-stack-exchange font-white" style="margin-top:-1px;"></i>Menu {{$index}}
+                                  <div class="float-right actionBadge" ng-show="activeForm == 'showPersistantMenu' && activePersistentMenu == i.MenuID" style="width:6px;height:6px;border:0.1px solid;border-radius:50%;margin-right:-14px;margin-top:-4px;background:#30e849"></div>
+                                </button> -->
+
+                        </div>
+                    </div>
+                </div>
+                <ul class="panel br catSort" ng-repeat="x in all |orderBy:'pos': false" style="list-style:none;padding:4px;border:none;background-color:#fafbfc">
+                    <i class="handle fa fa-folder mrg5R font-black opacity-hover float-left" ng-show="!stc" aria-hidden="true" style="cursor:s-resize;border:none;width:12px;height:12px;margin-left:5px;margin-top:12px;font-size:13px;"></i>
+                    <i class="handle fa fa-folder-open mrg5R font-black opacity-hover float-left" ng-show="stc" aria-hidden="true" style="cursor:s-resize;border:none;width:12px;height:12px;margin-left:5px;margin-top:12px;font-size:13px;"></i>
+
+                    <li class="panel-heading" style="cursor:pointer;background-color:#fafbfc" ng-click="stc = !stc" data-toggle="collapse" data-target="#cat-{{x.CategoryID}}">
+                        <h3 class="panel-title">
+                                       <a  data-parent="#accordion" style="margin-left:8px;text-decoration:none;">
+                                           {{x.Name}}
+                                       </a>
+                                       <i class="glyph-icon mrg5R icon-linecons-trash font-black opacity-hover float-right" ng-click="deleteCategory(x.CategoryID)" ng-show="stc" style="cursor:pointer;z-index:9999;border:none;width:12px;height:12px;margin-top:-1px;font-size:16px;"></i>
+
+                                   </h3>
+                    </li>
+
+                    <script type="text/ng-template" id="modals/categoryDeleteModal">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="modal-title">{{deletePromptCatName}}</h3>
+                        </div>
+                        <div class="modal-body" style="max-height:200px;overflow-y:auto">
+                        Are you sure you want to delete {{deletePromptCatName}} group. It will delete all its actions and if the actions are in a super action or a menu you can't delete this group.
+                        </div>
+
+                        <!-- Modal Footer Use if required -->
+
+                        <div class="modal-footer">
+                            <button class="btn btn-danger" type="button" ng-show="showDeleteLoader == false" ng-click="confirmDeletion()">DELETE</button>
+                            <div class="spinners" ng-show="showDeleteLoader == true" style="margin-top: 8px;
+                              margin-bottom: 2px;
+                              margin-right: 10px;
+                              width: 24px;
+                              height: 24px;
+                              right: 0px;
+                              position: relative;
+                              float: right;"></div>
+                            <!-- <button class="btn btn-default" type="button" ng-click="cancel()">CANCEL</button> -->
+                        </div>
+
+                    </script>
+
+                    <div id="cat-{{x.CategoryID}}" class="panel-collapse collapse actions">
+
+                        <div class="panel-body" id="actionList" style="padding-top:10px;padding-left:10px;padding-bottom:10px;">
+                            <button class="btn btn-default" ng-click="viewAction('createNew',x.CategoryID)" style="border-radius:10px;height:35px;margin-bottom:12px;margin-right:8px;">
+                                       <i class="glyph-icon mrg5R icon-plus tooltip-button"></i>
+                                       New Action
+                                     </button>
+                            <x id="actionPills" ng-repeat="i in x.actions track by $index">
+                                <div class="status-badge">
+
+                                    <button id="actBut1-{{i.ActionID}}" class="btn" ng-click="viewAction(i.ActionID,x.CategoryID)" ng-class="{ 'activePill':  actionsAndCategoriesService.getActiveActionId() == i.ActionID}" style="border:none;background-color:#2196f3;color:white;font-size:12px;margin-bottom:12px;margin-right:5.5px;height:35px;border-radius:10px;padding-left:25px;padding-right:25px"
+                                        id="action">
+<i class="glyph-icon mrg5R {{returnType(i.Type)}} font-white" style="margin-top:-1px;"></i>{{i.ActionName}}
+<i class="fa fa-exclamation-circle float-right actionBadges"  ng-show="inactiveElementsArray.indexOf(i.ActionID)>=0" aria-hidden="true" style="color:#e9604a;
+right: 0;
+margin-right: 5px;
+margin-top: 5px;
+top: 0;
+position: absolute;"></i>
+<!-- <div id="act{{i.ActionName}}" class="float-right actionBadges" ng-show="inactiveElementsArray.indexOf(i.ActionID)>=0" style="width:6px;height:6px;border:0.1px solid;border-radius:50%;margin-right:-14px;margin-top:-4px;background:#e9604a"></div> -->
+</button>
+                                </div>
+                            </x>
+                        </div>
+                    </div>
+                </ul>
+
+            </div>
+            <h5 class="" style="margin-left:25%;" ng-show="all.length == 0 || selectedPage.page_id.length == 0">
+                       No Groups to Display
+                     </h5>
+        </div>
+    </div>
+    <h5 style="margin-top: 50%;margin-left: 50px;" ng-if="selectedPage == ''">Nothing to show.Pleae select a facebook page to start.</h5>
+</div>

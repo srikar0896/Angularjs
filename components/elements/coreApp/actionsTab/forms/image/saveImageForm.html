@@ -1,0 +1,58 @@
+<div class="panel br" ng-controller="saveImageController" ng-show="activeForm == 'saveImageForm'" style="height:520px;float:left;position:relative;margin-left:24px;min-width:320px;width:320px;max-width:350px;">
+    <div class="panel-body">
+        <saveform-inputs></saveform-inputs>
+            <div class="panel" style="border:none;">
+                <div class="panel-body" style="padding:15px;border:none;">
+
+                        <!--<ul class="nav-responsive nav nav-pills">
+                                        <li class="active"><a data-target="#ptab1" data-toggle="tab" style="margin-left:14px;">Upload</a></li>
+                                        <li><a data-target="#ptab2" data-toggle="tab">By URL</a></li>
+                                    </ul> -->
+
+
+                                <div>
+
+                                  <input type="file" accept="image/*" name="file" id="file" class="inputfile" />
+                                  <label for="file"><i class="glyph-icon tooltip-button demo-icon icon-cloud-upload" style="font-size: 20px;width: 40px;height: 20px;border:none;padding:0; margin-top:-8px;margin-left:0px; margin-right:0px; margin-bottom:0px;"></i>Choose a file</label>
+                                    <br>
+                                    <img id="blah" ng-src="{{image_path}}" alt="  Select an image  " style="width:260px;height:200px;display:none;"/>
+
+                                </div>
+
+                        <!-- <div class="example-box-wrapper">
+                                                   <div class="row" id="dropzone-example">
+                                                       <form action="/file-upload" class="dropzone bg-gray col-md-10 center-margin" id="demo-upload" style="height:150px;width:78%"></form>
+                                                   </div>
+                                               </div> -->
+
+
+                        <!--  <div class="tab-pane" id="ptab2" style="padding-bottom:2px;">
+                                            <form class="form-horizontal bordered-row" data-parsley-validate="">
+                                                <div class="form-group remove-border">
+                                                    <div class="col-sm-6" style="width:100%;margin-top:-10px;padding:5px;">
+                                                        <input type="text" data-parsley-type="url" placeholder="URL address" required class="form-control">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div> -->
+                </div>
+            </div>
+            <!-- <div style="width: 100%;padding-left: 8px;">
+              <button id="quickReplyButton" class="btn ra-100 btn-default"
+              ng-click="activeForm = 'quickReplyCard'"
+              style="border-radius:10px;height:35px;margin-bottom:12px;margin-right:8px;">
+                             <i class="glyph-icon mrg5R icon-plus tooltip-button"></i>New Reply
+
+                    </button>
+            </div> -->
+
+        </div>
+
+
+
+        <div class=" button-pane remove-border float-right" style="margin-top:472px;padding:0px;right:25px;top:0;position:absolute;">
+            <div class="spinners" ng-show="showImageSaveLoader == true" style="margin-top:8px;margin-bottom:-8px;margin-left:8px;margin-right:10px;width:24px;height:24px;"></div>
+            <center><button class="btn btn-info bg-primary" ng-disabled="disableSaveImageBtn()" ng-show="!(showImageSaveLoader)" ng-click="saveImageAction();" style="float:right;">Save</button></center>
+        </div>
+    </div>
+</div>

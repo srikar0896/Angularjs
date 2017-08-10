@@ -1,0 +1,81 @@
+<div ng-controller="chatActionsController" class="example-box-wrapper" style="margin-top:4px;width:41%;height:100%;overflow-y:hidden;margin-left:0px;border-width: 1px;  border-style: solid; border-color: #dfe8f1; margin-left:0px; border-radius:3px;border-top-left-radius: 0px;
+border-bottom-left-radius: 0px; border-left:none;">
+    <h4 style="font-size:17px;margin-top:8px;margin-left:7px;text-transform:capitalize;">Action Palette</h4>
+
+    <input type="text" class="form-control" id="searchBar" style="margin-top:-5px;margin-left: 7px;width:86%" placeholder="Search (Coming Soon)">
+
+    <h5 class="" style="margin-top:115px;margin-left:25%;" ng-show="all.length == 0 && actionLoader == false">
+No Categories to Display
+</h5>
+
+    <div ng-show="actionLoader" class="spinners" style="width:30px;height:30px;margin-top:10%;margin-left:48%;font-size:20px;"></div>
+    <!--  <div ng-show="all.length == 0" style="border:2px solid black; width:200px;height: 300px;">
+<span style="margin-top:10%;margin-left:30%;">Define some Actions in the Actions Tab for you to use here in your conversations.</span>
+</div> -->
+    <div style="overflow-y:auto;height:90%;">
+        <div class="panel-group" id="" style="border:none;">
+            <div ng-show="!(all.length == 0)" class="panel" style="border:none;margin-left: 2px;">
+                <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#allShortcuts" style="cursor:pointer;border:none">
+                    <h3 class="panel-title">
+            <a  style="text-decoration:none;">
+            Shortcuts
+            </a>
+        </h3>
+
+                </div>
+                <div id="allShortcuts" class="panel-collapse Collapse in">
+                    <div class="panel-body" style="padding:10px;border:none">
+                        <center>
+                            <h6 ng-show="x.actions.length==0">No actions to display</h6></center>
+
+                        <x id="demo-show-snackbar" ng-repeat="i in all | orderBy:'pos': false" style="cursor:pointer">
+                            <y ng-repeat="y in i.actions">
+
+                                <!-- <button class="btn" style="background-color:#2196f3;color:white;font-size:12px;margin-right:8px;margin-bottom:8px;" ng-click="showToasterMessage(y.ActionID,y.Shortcut)">
+                        <i class="glyph-icon font11 {{returnType(y.Type)}} font-white"></i> {{y.ActionName}}
+                      </button> -->
+                                <div class="btn-toolbar" role="toolbar" style="display:inline-block;float:left;margin-right:10px;">
+                                    <div class="btn-group" ng-if="y.Shortcut.length>2">
+
+                                        <button type="button" class="btn" style="background-color:#2196f3;padding-left:7px;color:white;font-size:12px;margin-bottom:8px;" ng-click="showToasterMessage(y.ActionID,y.Shortcut)"><i class="glyph-icon font11 {{returnType(y.Type)}} mrg5R font-white" style="margin-left:"></i>{{y.ActionName}}</button>
+                                        <button type="button" class="btn" style="background-color:#3080e8;color:white;font-size:12px;padding:7px;margin-bottom:8px;" ng-click="showToasterMessage(y.ActionID,y.Shortcut)">{{y.Shortcut}}</button>
+                                    </div>
+                                </div>
+                            </y>
+                        </x>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="panel" ng-repeat="x in all" style="border:none">
+                <div class="panel-heading br" data-target="#{{x.CategoryID}}" data-toggle="collapse" style="cursor:pointer;border:none">
+                    <h3 class="panel-title">
+              <a  data-parent="#accordion"  style="text-decoration:none;">
+                  {{x.Name}}
+              </a>
+          </h3>
+                </div>
+                <div id="{{x.CategoryID}}" class="panel-collapse collapse">
+                    <div class="panel-body" style="padding:10px;">
+                        <center>
+                            <h6 ng-show="x.actions.length==0">No actions to display</h6></center>
+                        <x id="demo-show-snackbar" ng-repeat="i in x.actions | orderBy:false" style="cursor:pointer" ng-click="showToasterMessage(i.ActionID,i.Shortcut)">
+
+
+                            <!-- <button class="btn xcc" style="height:35px;padding-left: 20px;padding-right: 20px;border-radius: 10px;background-color:#2196f3;box-shadow:none; color:white;font-size:12px;margin-right:5.5px;margin-bottom:8px;">
+                          <i class="glyph-icon font11 {{returnType(i.Type)}} font-white"></i> {{i.ActionName}}
+                        </button> -->
+                            <div class="btn-group">
+                                <button type="button" class="btn" style="background-color:#2196f3;padding-left:7px;color:white;font-size:12px;margin-bottom:8px;" ng-click="showToasterMessage(i.ActionID,y.Shortcut)"><i class="glyph-icon font11 {{returnType(i.Type)}} mrg5R font-white" style="margin-left:"></i>{{i.ActionName}}</button>
+                                <button ng-if="i.Shortcut.length>2" type="button" class="btn" ng-click="showToasterMessage(i.ActionID,y.Shortcut)" style="background-color:#3080e8;color:white;font-size:12px;padding:7px;margin-bottom:8px;">{{i.Shortcut}}</button>
+                            </div>
+                        </x>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
