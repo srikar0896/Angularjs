@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sortable</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery.ui.touch-punch.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.4/angular.min.js"></script>
+    <script src="https://rawgithub.com/angular-ui/ui-sortable/master/src/sortable.js"></script>
+    <script src="controller.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div ng-app="sortableApp" ng-controller="sortableController" class="container">
+        <h2>ui.sortable connected lists event order</h2>
+        <div>
+        <div ui-sortable ng-model="rawScreens">
+            <div ng-if="rawScreens[$index].length>0" ng-repeat="rawScreen in rawScreens track by $index" ui-sortable="sortableOptions" class="apps-container screen floatleft clear" ng-model="rawScreens[$index]">
+                    Rank - {{$index + 1}}
+                <div class="app" ng-repeat="app in rawScreen">{{app.title}}</div>
+            </div>
+
+        </div>
+        </div>
+        <div class="floatright">
+            <button type="button" ng-click="logModels()">Show Ranks</button>
+            <ul class="list logList">
+                <li ng-repeat="entry in sortingLog" class="logItem">
+                    {{entry}}
+                </li>
+            </ul>
+        </div>
+    
+        <div class="clear"></div>
+</body>
+
+</html>

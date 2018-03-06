@@ -1,0 +1,64 @@
+.list {
+	list-style: none outside none;
+	margin: 10px 0 30px;
+}
+
+.apps-container {
+  border: 2px dashed blue;
+  margin: 10px 10px 0 0;
+  padding: 5px;
+}
+
+.app {
+	width: 170px;
+	padding: 5px 10px;
+	margin: 5px 0;
+	border: 2px solid #444;
+	background-color: #b2b2b2;
+
+	font-size: 1.1em;
+	font-weight: bold;
+	text-align: center;
+	cursor: move;
+}
+
+
+/***  Extra ***/
+
+body {
+	font-family: Verdana, 'Trebuchet ms', Tahoma;
+}
+
+.logList {
+	margin-top: 20px;
+	width: 250px;
+	min-height: 220px;
+	padding: 5px 15px;
+	border: 5px solid #000;
+}
+
+.logItem {
+  margin-bottom: 10px;
+}
+
+.container {
+	width: 750px;
+	margin: auto;
+}
+
+h2 {
+	text-align: center;
+}
+
+.floatleft {
+  float: left;
+}
+
+.floatright {
+	margin-top: -220px;
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
